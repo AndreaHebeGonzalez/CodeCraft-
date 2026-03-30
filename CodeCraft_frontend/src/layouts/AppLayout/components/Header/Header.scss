@@ -1,0 +1,61 @@
+@use '@/shared/styles/utils' as s;
+
+
+.header {
+  border-bottom: 0.2px solid s.$divider;
+
+  &__content {
+    @include s.flex-between(row, 0);
+    padding: 2rem 0;
+  }
+
+  &__left {
+    @include s.flex-between(row, 2rem);
+
+    button[disabled] {
+      border: 1px solid white;
+      color: white;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  &__logo {
+
+    a {
+      @include s.flex-center(row, 1rem);
+    }
+    
+
+    h1 {
+      font-weight: 400;
+      font-size: 2.1rem;
+      font-family: s.$logo-font;
+
+      @include s.respond-to('tablet-2') {
+        font-size: 2.6rem;
+      }
+    }
+
+    img {
+      width: 3.5rem;
+      height: auto;
+
+      @include s.respond-to('tablet-2') {
+        width: 4rem;
+      }
+    }
+
+    
+  }
+
+  &__right {
+    @include s.flex-between(row, 1rem);
+  }
+
+  &__current-date {
+    p {
+      font-style: italic;
+    }
+  }
+}

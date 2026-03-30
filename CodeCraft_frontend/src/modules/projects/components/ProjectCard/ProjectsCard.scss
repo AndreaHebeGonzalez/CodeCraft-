@@ -1,0 +1,78 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.project-card {
+  position: relative;
+  background-color: s.$bg-cards;
+  padding: 2.5rem 3rem;
+  border-radius: 1rem;
+  border: 1px solid s.$bg-cards;
+  cursor: pointer;
+  transition: 
+  border 0.2s ease,
+  box-shadow 0.1s ease;
+  @include s.flex-between(row);
+
+  &:hover {
+    border: 1px solid s.$border-cards;
+  }
+
+  &:active {
+    box-shadow: 0 0px 4px 0.3px rgba(color.scale(s.$border-cards, $lightness: 8%), 0.4);
+  }
+
+
+  &__left {
+    cursor: default;
+    @include s.flex(column, 0.5rem);
+  }
+
+  &__date-coll {
+    @include s.flex(row, 0.5rem);
+
+    span {
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__undated {
+    color: s.$color-muted;
+    font-size: 1.2rem;
+    font-style: italic;
+
+    align-items: center;
+    @include s.flex(row, 1rem);
+  }
+
+  &__name {
+    
+    font-style: italic;
+    font-size: 1.7rem;
+  }
+
+  &__status {
+    position: absolute;
+    top: -15%;
+    left: 1%;
+  }
+
+  &__options {
+    padding: 0.5rem;
+    cursor: pointer;
+    height: 100%;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    justify-content: center;
+    align-items: center;
+    height: 2.6rem;
+    width: 2.6rem;
+    justify-content: center;
+    align-items: center;
+    @include s.flex(column);
+
+    &:hover {
+      background-color: color.scale(s.$bg-cards, $lightness: 5%); 
+    }
+  }
+}

@@ -1,0 +1,114 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.task-card {
+  position: relative;
+  cursor: pointer;
+  padding: 1.5rem 1rem;
+  border: 0.05rem solid s.$border-cards;
+  border-radius: 0.5rem;
+  position: relative;
+  background-color: s.$bg-cards;
+  margin: 0.5rem 0; 
+  @include s.flex(column, 1.5rem);
+
+  &__header {
+    position: relative;
+    align-items: center;
+    @include s.flex-between(row, 1rem);
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex-basis: 80%;
+  }
+
+  &__options {
+    align-self: end;
+    height: 24px;
+    width: 24px;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    align-items: center;
+    justify-content: center;
+    @include s.flex(column);
+
+    &:hover {
+      background-color: color.scale(s.$bg-cards, $lightness: 6%); 
+    }
+  } 
+
+  &__options-icon {
+    align-items: center;
+    justify-content: center;
+    @include s.flex(column);
+  }
+
+  &__collaborators {
+    align-self: self-start;
+    @include s.flex(row, 0.3rem);
+  }
+
+  &__footer {
+
+    justify-content: start;
+    @include s.flex(row, 2rem);
+
+    
+  }
+
+  &__subtasks {
+    align-items: center;
+    @include s.flex(row, 0.5rem);
+    
+    cursor: pointer;
+
+    p {
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+    
+  }
+
+  &__date-select {
+    cursor: pointer;
+
+    @include s.flex(row, 0.5rem);
+  }
+
+  &__icon-md {
+
+    &--color-muted {
+
+      path {
+        fill: s.$color-muted;
+      }
+    }
+    
+    
+  }
+
+  &__due-date {
+    font-size: 1.2rem;
+    color: #dfdfdf;
+    font-style: italic;
+    word-spacing: -1px;
+  }
+
+  &__indicators {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+
+    &--relative {
+      position: unset;
+      margin-left: auto ;
+      
+    }
+  }
+
+
+}

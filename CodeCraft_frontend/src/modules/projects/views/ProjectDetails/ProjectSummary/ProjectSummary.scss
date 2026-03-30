@@ -1,0 +1,110 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+
+.summary {
+  width: s.$widthPercentMobile;
+  margin: 0 auto;
+  padding: 2rem 0;
+  
+  @include s.respond-to("tablet-2") {
+    max-width: s.$widthPercent;
+  }
+
+  @include s.flex(column, 4rem);
+
+  &__first-row {
+    
+    @include s.flex(column, 3rem);
+
+    @include s.respond-to("tablet") {
+      @include s.flex(row, 3rem);
+    }
+  }
+
+  &__content {
+    @include s.flex(column, 3rem);
+
+    &--dates {
+      flex-basis: 40%;
+    }
+
+    &--roles {
+      flex: 1;
+    }
+  }
+
+  &__list-dates {
+    @include s.flex(column, 0.2rem)
+  }
+
+  &__date-item {
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    background-color: s.$bg-cards;
+    @include s.flex-between(row);
+
+    &:first-of-type {
+      padding: 0.6rem 2rem;
+    }
+  }
+
+  &__date-text,
+  &__date {
+    font-size: 1.3rem;
+  }
+
+  &__date {
+    font-style: italic;
+  }
+
+  &__date-selector {
+    transform: translateX(1.3rem);
+  }
+
+  &__undated {
+    color: s.$color-muted;
+    font-style: italic;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  &__roles-list {
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__role,
+  &__add-role {
+    align-items: center;
+    @include s.flex(row, 1rem); 
+  }
+
+  &__role-content {
+
+    @include s.flex(column);
+  }
+
+  &__collaborator {
+    font-size: 1.2rem;
+  }
+
+  &__role-name {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: s.$text-grey;
+  }
+
+  &__add-role {
+    cursor: pointer;
+
+    span {
+      font-size: 1.2rem;
+      color: s.$color-muted;
+    }
+  }
+
+}

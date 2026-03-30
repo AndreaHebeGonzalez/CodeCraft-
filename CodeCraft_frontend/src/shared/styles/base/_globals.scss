@@ -1,0 +1,117 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins' as m;
+
+/* Reset */
+
+html {
+  font-size: 62.5%;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: v.$bg-primary;
+  color: v.$text-primary;
+  font-family: v.$primary-font;
+  font-size: 1.4rem;
+}
+
+[class*="container"] {
+  /* max-width: 140rem; */
+  width: 95%;
+  margin: 0 auto;
+
+  @include m.respond-to("tablet-2") {
+    width: 98%;
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+[class$="field-row"] {
+  @include m.flex(row, 1rem);
+}
+
+[class$="field-column"] {
+  @include m.flex(column, 1rem);
+}
+
+[class*="icon-xlg"] {
+  width: v.$size-icon-xlarge;
+  height: v.$size-icon-xlarge;
+}
+
+[class*="icon-lg"] {
+  width: v.$size-icon-large;
+  height: v.$size-icon-large;
+}
+
+[class*="icon-md"] {
+  width: v.$size-icon-medium;
+  height: v.$size-icon-medium;
+}
+
+[class*="icon-sm"] {
+  width: v.$size-icon-small;
+  height: v.$size-icon-small;
+}
+
+[class*="icon-xs"] {
+  width: v.$size-icon-extra-small;
+  height: v.$size-icon-extra-small;
+}
+
+[class*="icon-wrapper"] {
+  justify-content: center;
+  align-items: center;
+  @include m.flex(row);
+}
+
+[class$="headers"] {
+  padding: 2rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @include m.respond-to("tablet") {
+    padding: 2rem;
+  }
+}
+
+input, textarea {
+  border: 1px solid v.$divider;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: v.$text-primary;
+  font-family: v.$secondary-font;
+  font-size: 1.4rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}

@@ -1,0 +1,29 @@
+@use '@/shared/styles/utils' as s;
+
+.project-activities {
+  background-color: s.$bg-cards;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  border: 0.5px solid s.$bg-nav;
+  @include s.flex(column, 1.5rem);
+
+  &__list {
+    @include s.flex(column, 1.5rem)
+  }
+
+  &__item {
+    @include s.flex(column, 0.8rem)
+  }
+
+  &__name {
+    font-size: 1.6rem;
+  }
+
+  &__time {
+    font-style: italic;
+  }
+
+  .project__name {
+    font-size: 2rem;
+  }
+} 

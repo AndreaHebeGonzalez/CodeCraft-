@@ -1,0 +1,27 @@
+@use '@/shared/styles/utils' as s;
+
+.overview {
+  padding-inline: s.$main-content-padding-inline;
+  @include s.grid(1, 2rem);
+
+  @include s.respond-to("tablet") {
+    @include s.grid(3, 5rem);
+  }
+
+  &__panel {
+    max-width: 38rem;
+    background-color: s.$bg-cards;
+    border: 0.5px solid s.$border-cards;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    @include s.flex(column, 1rem);
+  }
+
+  &__name {
+    font-size: 2rem;
+  }
+
+  &__number {
+    font-size: 3rem;
+  }
+}

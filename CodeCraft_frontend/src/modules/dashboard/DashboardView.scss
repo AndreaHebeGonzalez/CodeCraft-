@@ -1,0 +1,38 @@
+@use '@/shared/styles/utils' as s;
+
+
+.dashboard {
+  overflow-x: auto;
+  max-width: 100vw;
+
+  &__wrapper {
+    max-width: s.$widthPercentMobile;
+    margin: 0 auto;
+    @include s.flex(column, 3rem); //Espacio entre secciones
+
+    @include s.respond-to("tablet-2") {
+      max-width: s.$widthPercent;
+      gap: 4rem;
+    }
+  }
+
+  &__header {
+
+    p {
+      font-family: s.$secondary-font;
+      font-style: italic;
+    }
+  }
+  
+  &__upcoming-tasks {
+    padding-inline: s.$main-content-padding-inline;
+    @include s.flex(column, 3rem);
+  }
+
+  &__recent-activity {
+    padding-inline: s.$main-content-padding-inline;
+    @include s.flex(column, 3rem);
+  }
+
+
+}

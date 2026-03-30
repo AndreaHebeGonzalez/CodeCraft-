@@ -1,0 +1,22 @@
+@use '@/shared/styles/utils' as s;
+
+.task-form {
+  width: 50vw;
+  @include s.flex(column, 2rem);
+
+  @include s.respond-to("tablet") {
+    @include s.flex(column, 2.5rem);
+  }
+
+  &__content {
+    @include s.flex(column, 1.5rem);
+
+    @include s.respond-to("tablet") {
+      @include s.flex(column, 2.5rem);
+    }
+  }
+
+  &__highlighted {
+    color: s.$secondary-color;
+  }
+}

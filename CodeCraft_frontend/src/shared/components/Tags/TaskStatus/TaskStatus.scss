@@ -1,0 +1,65 @@
+@use '@/shared/styles/utils' as s;
+
+
+.task-status {
+  cursor: pointer;
+  @include s.flex-between(row);
+
+  &__wrapper {
+    align-items: center;
+    justify-content: start;
+    @include s.flex(row, 0.5rem);
+  }
+
+  &__row {
+    @include s.flex(row, 1rem);
+  }
+
+  &__icon-md {
+
+    &--pending {
+
+      path {
+        @include s.task-status-base('pending')
+      }
+      
+    }
+
+    &--onHold {
+
+      path {
+        @include s.task-status-base('onHold')
+      }
+      
+    }
+
+    &--inProgress {
+
+      path {
+        @include s.task-status-base('inProgress')
+      }
+      
+    }
+
+    &--underReview { /* No para subtasks */
+
+      path {
+        @include s.task-status-base('underReview')
+      }
+      
+    }
+
+    &--completed {
+
+      path {
+        @include s.task-status-base('completed')
+      }
+    }
+  }
+
+  &__text {
+    font-style: italic;
+    font-size: 1.4rem;
+    width: max-content;
+  }
+}

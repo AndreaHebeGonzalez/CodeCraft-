@@ -1,0 +1,15 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.status-banner {
+  font-size: 1.2rem;
+  padding: 0.3rem;
+  border: 1px solid s.$bg-cards;
+  border-radius: 0.5rem;
+  background-color: color.adjust(s.$bg-cards, $lightness: -15%);
+
+
+  span {
+    display: inline-block;
+  }
+}

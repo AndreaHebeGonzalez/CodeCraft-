@@ -1,0 +1,71 @@
+@use '@/shared/styles/utils' as s;
+
+.add-collaborator {
+  position: absolute;
+  background-color: s.$bg-cards;
+  left: 0%;
+  top: 110%;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  width: 65%;
+
+  &__wrapper{
+    position: relative;
+    padding: 0.8rem;
+  }
+
+  input {
+    font-size: 1.2rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__users-box {
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    border: s.$border-grey 1px solid;
+    background-color: #1B122B;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    width: 100%;
+  }
+
+  &__users-email-box {
+    
+  }
+
+  &__user-email-box {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    border-bottom: 1px solid s.$border-grey;
+    align-items: center;
+    @include s.flex(row, 1rem);
+  }
+
+  &__email {
+    color: s.$text-grey;
+  }
+
+
+  &__member-remove {
+    margin-left: auto;
+    cursor: pointer;
+
+  }
+
+  &__link-add {
+    cursor: pointer;
+    padding: 0.8rem;
+    color: s.$primary-color;
+    font-size: 1.2rem;
+    align-items: center;
+    @include s.flex(row, 0.8rem);
+
+    path {
+      stroke: s.$primary-color;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@use '@/shared/styles/utils' as s;
+
+.history-section {
+  @include s.flex(column, 0);
+
+  &__list {
+    @include s.flex(column, 1px);
+  }
+
+  &__item {
+    padding: 1rem;
+    background-color: s.$bg-cards;
+    
+    @include s.flex(column, 1rem);
+
+    &:first-of-type {
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+
+    &:last-of-type {
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+  }
+
+  &__text {
+    
+    span {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__time {
+    font-style: italic;
+  }
+
+  
+
+}

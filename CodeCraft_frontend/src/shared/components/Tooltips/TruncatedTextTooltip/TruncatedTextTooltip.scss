@@ -1,0 +1,13 @@
+@use '@/shared/styles/utils' as s;
+
+
+.tooltip {
+  background-color: s.$bg-cards;
+  font-size: 1.3rem;
+  padding: 0.3rem 0.5rem;
+  z-index: 500;
+  border: 1px solid s.$border-cards;
+  border-radius: 0.5rem;
+  white-space: normal;
+  width: max-content;
+}

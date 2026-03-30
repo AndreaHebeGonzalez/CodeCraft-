@@ -1,0 +1,9 @@
+@use '@/shared/styles/utils' as s;
+
+.input-error {
+  
+  &__message {
+    color: s.$error-color;
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,23 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.action-menu {
+  position: absolute;
+  top: -60%;
+  left: -60%;
+
+  background-color: s.$bg-nav;
+  border-radius: 0.5rem;
+  z-index: 20;
+  padding: 1rem 0;
+  @include s.flex(column, 0rem);
+
+  &__link {
+    display: block;
+    padding: 0.5rem 2rem;
+
+    &:focus {
+      background-color: color.scale(s.$bg-nav, $lightness: 6%);
+    }
+  }
+}

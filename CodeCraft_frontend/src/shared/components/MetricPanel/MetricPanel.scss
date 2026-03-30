@@ -1,0 +1,20 @@
+@use '@/shared/styles/utils' as s;
+
+.metric-panel {
+  background-color: s.$bg-cards;
+  border: 1px solid s.$border-cards;
+  padding: 2.5rem 3rem;
+  border-radius: 1rem;
+  gap: 2rem;
+
+  align-items: center;
+  @include s.flex-between(row);
+
+  &__text {
+    font-size: 2rem;
+  }
+
+  &__value {
+    font-size: 4rem;
+  }
+}

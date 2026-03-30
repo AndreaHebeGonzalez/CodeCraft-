@@ -1,0 +1,111 @@
+@use '@/shared/styles/utils' as s;
+
+.subtasks {
+  position: relative;
+  
+  @include s.flex(column, 2rem);
+  flex-direction: column-reverse;
+
+  @include s.respond-to("mobile-2") {
+    @include s.grid-custom(0.45fr 0.55fr);
+  }
+
+  &__list-wrapper {
+    overflow: auto;
+    padding-right: 5rem;
+    padding-top: 0.3rem;
+    max-height: 81px;
+    scroll-padding: 1rem;
+
+    @include s.respond-to("tablet") {
+      max-height: 155px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+    }
+  }
+
+  &__list {
+    @include s.flex(column, 1.2rem);
+  }
+
+  &__form {
+    position: relative;
+    @include s.flex(column, 1rem);
+  }
+
+  &__input-add {
+    border-radius: 0.5rem;
+    border: 1px solid s.$border-cards;
+    background-color: s.$bg-cards;
+    @include s.flex-between(row);
+
+    & > input {
+      flex: 1;
+      border: none;
+      padding-left: 1rem;
+      outline: none;
+    }
+  }
+
+  &__add-actions {
+    padding-right: 1rem;
+    align-items: center;
+    @include s.flex(row, 0.5rem);
+
+    div {
+      align-items: center;
+      justify-content: center;
+      @include s.flex(row);
+    }
+
+    g {
+      stroke: s.$text-grey;
+    }
+
+    path {
+      fill: s.$text-grey;
+    }
+  }
+
+  &__dueDate {
+    font-size: 1.2rem;
+  }
+
+  &__footer {
+    align-items: center;
+    @include s.flex(row, 1rem);
+  }
+
+  &__button-add {
+    button {
+      font-size: 1.3rem;
+      font-weight: 300;
+      padding: 0.5rem 1rem;
+
+      svg {
+        width: s.$size-icon-medium;
+        height: s.$size-icon-medium;
+      }
+    }
+  }
+
+  &__collaborators {
+    align-items: center;
+    @include s.flex(row, 0.5rem);
+  }
+
+  &__calendar {
+    z-index: 30;
+    position: absolute;
+    right: -10%;
+    top: -10%;
+    width: 25rem;
+  }
+}

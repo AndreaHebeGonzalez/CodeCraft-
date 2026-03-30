@@ -1,0 +1,146 @@
+@use './variables' as v;
+@use 'sass:map';
+@use 'sass:color';
+
+
+
+/* Botones */
+
+@mixin button-base($bg-color, $color, $border) {
+  background-color: $bg-color;
+  color: $color;
+  font-family: v.$primary-font;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border: $border;
+  width: max-content;
+
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
+}
+
+
+/* Flex */
+
+@mixin flex($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap
+}
+
+@mixin flex-center($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin flex-between($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: space-between;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin flex-around($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: space-around;
+  align-items: center;
+  gap: $gap;
+}
+
+
+/* Grid */
+
+@mixin grid($columns, $gap: 1rem, $rows: auto) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+
+@mixin grid-center($columns, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+  place-items: center;
+}
+
+@mixin grid-custom($columns, $rows: auto, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: $columns; // puede ser repeat() o valores distintos
+  grid-template-rows: $rows;
+  gap: $gap;
+  
+}
+
+/* media query */
+
+@mixin respond-to($breakpoint) {
+  $value: map.get(v.$breakpoints, $breakpoint);
+
+  @if $value {
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "No existe el breakpoint `#{$breakpoint}` en $breakpoints.";
+  }
+}
+
+
+/* Task Status */
+
+@mixin task-status-base($task-states) {
+  $value: map.get(v.$task-states, $task-states); 
+
+  @if $value {
+    stroke: $value;
+    
+  } @else {
+    @warn "No existe el estado `#{$task-states}` en $task-states.";
+  }
+}
+
+@mixin task-priority-base($task-priority) {
+  $value: map.get(v.$task-priority, $task-priority); 
+
+  @if $value {
+    fill: $value;
+
+  } @else {
+    @warn "No existe la prioridad `#{$task-priority}` en $task-priority.";
+  }
+}
+
+@mixin project-status-base($project-status) {
+  $value: map.get(v.$project-status, $project-status);
+
+  @if $value {
+    background-color: color.adjust($value, $lightness: -20%);
+    border: 1px solid $value;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    width: max-content;
+
+    & > div {
+      border-radius: 50%;
+      width: 1rem;
+      height: 1rem;
+      background-color: $value;
+    }
+
+  } @else {
+    @warn "No existe el estado `#{$project-status}` en $project-status"
+  }
+}

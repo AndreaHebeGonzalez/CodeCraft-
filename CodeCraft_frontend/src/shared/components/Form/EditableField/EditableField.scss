@@ -1,0 +1,79 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.editable-field {
+  position: relative; 
+
+  &.margin-bottom {
+    margin-bottom: 1.5rem;
+  }
+
+  textarea {
+    overflow-y: hidden;
+    width: 100%;
+  }
+
+  &__overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(s.$bg-primary, 0) 0%,
+      rgba(s.$bg-primary, 1) 100%
+    );
+  }
+
+  &__btn-wrapper {
+    position: absolute;
+    left: 50%;
+    bottom: 0.5rem;
+    transform: translateX(-50%);
+
+    button {
+      padding: 0.2rem 0.5rem;
+      background-color: s.$bg-primary;
+      font-size: 1.2rem;
+
+      &:hover {
+        background: color.adjust(s.$bg-primary, $lightness: 3%);
+      }
+    }
+  }
+
+  &__expand-text-btn {
+      height: 2.4rem;
+      padding: 0 1rem;
+      background-color: s.$bg-primary;
+      font-size: 1.2rem;
+      align-items: center;
+      display: inline-flex;
+      line-height: 1.333333;
+
+      @include s.button-base(transparent, color.adjust(s.$text-grey, $lightness: 5%), 1px solid s.$border-cards);
+      @include s.flex(row, 0.5rem);
+
+      &:hover {
+        background: color.adjust(s.$bg-primary, $lightness: 3%);
+      }
+  }
+
+  &__expand-text-icon {
+    align-items: center;
+    justify-content: center;
+    @include s.flex(row);
+
+    svg {
+      display: block;
+
+      path {
+        stroke: color.adjust(s.$text-grey, $lightness: 5%);
+      }
+    }
+  }
+}

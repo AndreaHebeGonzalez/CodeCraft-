@@ -1,0 +1,31 @@
+@use '@/shared/styles/utils' as s;
+
+.layout {
+  height: 100vh;
+  @include s.flex(column);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden; // que el main no scrollee
+  /* max-width: 140rem; */
+  
+
+  &__content {
+    padding: 2rem 0 3rem 0;
+    flex: 1;
+    overflow-y: auto; 
+    min-height: 0; 
+
+    &::-webkit-scrollbar {
+    width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+    }
+  }
+}

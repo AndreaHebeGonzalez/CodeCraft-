@@ -1,0 +1,13 @@
+@use '@/shared/styles/utils' as s;
+
+.project-role {
+  background-color: s.$icons;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  @include s.flex-center();
+  
+  span {
+    color: s.$black;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,47 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.task-actions {
+  position: absolute;
+  top: 25%;
+  right: -2%;
+  background-color: s.$bg-nav;
+  border-radius: 0.5rem;
+  z-index: 20;
+  padding: 1rem 0;
+  @include s.flex(column);
+
+  &__item {
+    
+    &--deleted {
+      display: block;
+      padding: 0.5rem 1rem;
+      font-size: 1.4rem;
+      align-items: center;
+      justify-content: start;
+      @include s.flex(row, 1rem); 
+  
+      &:hover {
+        background-color: rgb(s.$atRisk, 0.3);
+      }
+    }
+
+    span {
+      font-size: 1.4rem;
+      font-style: italic;
+    }
+  }
+
+  &__link {
+    display: block;
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    justify-content: start;
+    @include s.flex(row, 1rem); 
+
+    &:hover {
+      background-color: color.scale(s.$bg-nav, $lightness: 6%);
+    }
+  }
+}

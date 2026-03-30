@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+/* Variables */
+
+/* ***** Colores ***** */
+
+// Principales
+$primary-color: #227DC4; // Boton primario
+$secondary-color: #7258D4; // Boton secundario, detalles, links
+$error-color: #c94b4b;
+$check: #229c26;
+
+// Fondos
+$bg-primary: #221835;     // Fondo principal
+$bg-nav: #2e2047; // Fondo menus
+$bg-cards: #1B1126; // Fondos para tarjeta de tarea, actividad reciente 
+$border-cards: #352750;
+$bg-secondary: #1B122B; // Fondo para contenedor de cards, calendarios, campo de comentarios, inputs secundarios
+$bg-bar: #2F2247; // Barra inferior del menu principal
+
+// Neutros:
+$divider: #bdbdbd;    // Líneas divisorias
+$text-primary: #fff;  
+$text-grey: #b3b3b3;    // Texto principal
+$border-grey: #6E6E6E;
+$text-secondary: #D8D8D8; // Texto secundario
+$color-muted: #b7b7b7; // Texto apagado
+$btn-disabled: #4c425f;
+$icons:  #fff;
+$white: #fff;
+$black: #000;
+
+// Calendar 
+
+  // today
+  $rdp-today: #d43226;
+
+//dueStatus: 
+$warning: #fbc828;
+$overdue: #fd5f53; //C94B4B
+
+// Project status
+
+$project-status: (
+  'notStarted': #385379, // pendiente de empezar
+  'inProgress': #192EB1, // en progreso
+  'atRisk': #d3202f, // en riesgo
+  'completed': #009658, // completado
+);
+
+$notStarted: #385379; // pendiente de empezar
+$inProgress: #192EB1; // en progreso
+$atRisk: #d3202f; // en riesgo
+$completed: #009658; // completado
+
+// Task status:
+
+$task-states: (
+  'pending': #465B79, // pendiente de empezar
+  'onHold': #d64450, // en espera
+  'inProgress': #192EB1, // en progreso
+  'underReview': #ce994f, // en revisión
+  'completed': #009658, // completada
+);
+
+$pending: #465B79; // pendiente de empezar
+$onHold: #d64450; // en espera
+$inProgress: #192EB1; // en progreso
+$underReview: #ce994f; // en revisión
+$completed: #009658; // completada
+
+// Task priority:
+
+$task-priority: (
+  'low': #25ad75, // baja
+  'medium': #79AFFD, // media
+  'high': #f75932, // alta
+  'critical': #eb3d57, // critica
+);
+
+$low: #33D391; // baja
+$medium: #79AFFD; // media
+$high: #f75932; // alta
+$critical: #eb3d57; // critica
+
+
+
+/* ***** Fonts ***** */
+
+$primary-font: "Lato", sans-serif;
+$secondary-font: "Nunito Sans", sans-serif;
+$logo-font: "Kanit", sans-serif;
+
+/* Spaces */
+
+$spacing-mobile: 1.5rem; //Espacio entre secciones de una vista mobile
+$spacing-desktop: 2rem; //Espacio entre secciones de una vista mobile
+$secondary-space: 3rem; 
+$widthPercentMobile: 95%;
+$widthPercent: 98%;
+
+/* Main-contente size */
+$main-content-padding-inline: 2rem;
+
+/* ***** Media Queries ***** */
+$breakpoints : (
+  "mobile": 480px,  
+  "mobile-2": 665px,  
+  "tablet": 768px, 
+  "tablet-2": 992px, /* quiebre mobile en layout */
+  "desktop": 1024px, 
+  "desktop-2": 1280px, 
+  "desktop-3": 1440px, 
+  "desktop-4": 1665px, 
+  "desktop-5": 1920px, 
+  "smartTv": 2500px, 
+);
+
+
+/* Sidebar width */
+$sidebar_collapsed_mobile_WIDTH: 0;
+$sidebar_collapsed_width: 50px;
+$sidebar_expanded_width: 180px;
+
+
+/* Sidebar icon styling */
+$size-icon-extra-small: 1.2rem;
+$size-icon-small: 1.4rem;
+$size-icon-medium: 1.6rem;
+$size-icon-large: 2rem;
+$size-icon-xlarge: 2.5rem;
+
+$sidebar-item-spacing-inline: 1.3rem;
+

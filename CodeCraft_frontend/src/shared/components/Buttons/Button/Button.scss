@@ -1,0 +1,50 @@
+@use '@/shared/styles/utils' as s;
+
+.btn {
+  align-items: center;
+  @include s.flex(row, 0.5rem);
+
+  &--outline {
+    @include s.button-base(transparent, #fff, 1px solid #fff);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.068);
+    }
+  }
+
+  &--add-task {
+    
+    @include s.button-base(transparent, #fff, none);
+
+    &:hover {
+      background: transparent /* rgba(s.$secondary-color, 0.8) */;
+    }
+  }
+
+  &--form {
+    @include s.button-base(s.$primary-color, #fff, none);
+
+    &:hover {
+      background: rgba(s.$primary-color, 0.8);
+    }
+  }
+
+  &--disabled {
+    background: transparent;
+    border: s.$btn-disabled 1px solid;
+    color: s.$btn-disabled;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  &__icon-md {
+
+    path {
+      stroke: #fff;
+    }
+    
+  }
+}
+

@@ -1,0 +1,11 @@
+@use '@/shared/styles/utils' as s;
+
+
+.subtask-indicators {
+  
+  @include s.flex(column, 0.5rem);
+
+  &__selector {
+    position: relative;
+  }
+}

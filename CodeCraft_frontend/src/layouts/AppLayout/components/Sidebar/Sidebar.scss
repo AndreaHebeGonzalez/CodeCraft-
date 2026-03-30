@@ -1,0 +1,182 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+
+  @include s.respond-to("tablet") {
+    position: static;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 50;
+  
+  @include s.respond-to("tablet") {
+    position: static;
+  }  
+
+  &__wrapper {
+    background-color: s.$bg-nav;
+    min-height: 100dvh;
+    transition: width 0.5s ease;
+    overflow: hidden;
+    width: 5rem;
+
+    @include s.respond-to("tablet") {
+      padding-top: 4rem;
+    }
+  }
+
+  &__header {
+    padding: 1.5rem 0 1.5rem 2rem;
+    background-color: color.adjust(s.$bg-nav, $lightness: -5%);
+    border-bottom: 0.2px solid s.$divider;
+    align-items: center;
+    height: 4.6rem;
+    min-width: 24rem;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+    @include s.flex(row, 2rem);
+
+    &:hover {
+      background-color: color.adjust(s.$bg-nav, $lightness: -6%);
+    }
+  }
+
+  &__logo {
+    /* width: 100%; */
+    
+    @include s.flex(row);
+
+    a {
+      @include s.flex-center(row, 1rem);
+    }
+    
+    h1 {
+      font-weight: 400;
+      font-size: 1.8rem;
+      font-family: s.$logo-font;
+    }
+
+    img {
+      width: 2.5rem;
+      height: auto;
+    }
+  }
+
+  &__content {
+    padding-top: 2rem;
+    
+    @include s.flex(column, 0);
+
+    @include s.respond-to("tablet") {
+      padding-top: 0;
+    }
+  }
+
+  &__main {
+    padding-bottom: 2rem;
+    
+    border-bottom: 0.2px solid s.$divider;
+    @include s.flex(column, 0);
+  }
+
+  &__list {
+    @include s.flex(column, 2rem);
+  }
+
+  &__item {
+    padding-left: s.$sidebar-item-spacing-inline;
+    align-items: center;
+    min-width: 5rem;
+
+    @include s.flex(row);
+  }
+
+  &__icon-lg {
+    flex: 0 0 2rem;
+    margin-right: s.$sidebar-item-spacing-inline; 
+  }
+
+  &__item-text {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__projects {
+    position: relative;
+    min-width: 129px;
+    padding: 2rem 0;
+    width: 100%;
+    border-bottom: 0.2px solid s.$divider;
+    @include s.flex(column, 1rem);
+  }
+
+  &__projects-list-wrapper {
+    position: absolute;
+    left: 100%;
+    z-index: 100;
+  }
+
+
+  &__projects-list {
+    background-color: s.$bg-nav;
+   
+
+    margin-left: 1.5rem; //!
+
+
+    max-height: 120rem;
+    overflow-y: auto;
+    padding-left: 3rem;
+    min-width: 20rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(s.$black, 0.438) transparent;
+    padding-right: 1rem;
+    scrollbar-gutter: stable;
+
+    @include s.flex(column, 1rem);
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.788);
+      border-radius: 4px;
+	  }
+
+    & > * {
+      scroll-snap-align: start;
+    }
+  }
+
+  &__link-project {
+    align-items: center;
+    @include s.flex(row, 1rem);
+  }
+
+  &__goals {
+    min-width: 129px;
+    padding: 2rem 0;
+  }
+
+  &__close-icon {
+    position: absolute;
+    top: 0.5rem;
+    right: -3rem;
+    z-index: 100;
+  }
+
+  &__tooltip {
+    z-index: 100;
+  }
+}

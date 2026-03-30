@@ -1,0 +1,55 @@
+@use '@/shared/styles/utils' as s;
+
+.project-nav {
+  margin: 0 0.1rem;
+  background-color: s.$bg-nav;
+
+  
+
+  &__wrapper {
+    width: s.$widthPercentMobile;
+    margin: 0 auto;
+    align-items: center;
+    @include s.flex(row, 3rem);
+
+    @include s.respond-to("tablet-2") {
+      max-width: s.$widthPercent;
+    }
+  }
+
+  &__link {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    padding: 1rem 0;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0%;
+      display: block;
+      height: 3px;
+      width: 100%;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      background-color: s.$bg-secondary;
+      transform: translateY(100%);
+      transform-origin: center; 
+      transition: all 0.2s linear;
+    }
+
+    &:hover::after,
+    &.active::after  {
+      transform: translateY(0%);
+    }
+  }
+
+  &__add {
+    margin-left: auto;
+
+    & button {
+      padding: 0.5rem;
+    }
+  }
+}

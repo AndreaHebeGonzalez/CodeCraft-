@@ -1,0 +1,103 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.date-selector {
+  position: relative;
+
+  &__button-trigger {
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    justify-content: space-between;
+    padding: 0.4rem 1rem;
+    background-color: s.$bg-cards;
+    border: 1px solid s.$border-cards;
+    align-items: center;
+    @include s.flex(row, 1rem);
+
+    &:hover {
+      background-color: color.adjust(s.$bg-cards, $lightness: 2%);
+    }
+
+    &--light {
+      background-color: transparent;
+      border: none;
+
+      &:hover {
+      background-color: color.adjust(s.$bg-cards, $lightness: 3%);
+    }
+    }
+  }
+
+  &__segment {
+
+    align-items: center;
+    @include s.flex(row, 0.5rem)
+  }
+
+  &__button {
+    
+    cursor: pointer;  
+    min-width: 10rem;
+    text-align: left;
+
+    &--split {
+      justify-content: center;
+      align-items: center;
+      @include s.flex(row, 1rem);
+    }
+  }
+
+  &__label {
+    font-size: 1.3rem;
+    font-style: italic;
+    font-family: s.$primary-font;
+    color: s.$white;
+
+    &--muted {
+      color: s.$color-muted;
+    }
+  }
+
+  &__icon-sm {
+
+    
+
+    &--color-muted {
+
+      path {
+        fill: s.$color-muted;
+      }
+    }
+  }
+
+  &__clear {
+    border-radius: 0.3rem;
+    padding: 0.1rem;
+    cursor: pointer;
+    
+    justify-content: center;
+    align-items: center;
+    @include s.flex(row);
+
+    &:hover {
+      background-color: color.adjust(s.$bg-cards, $lightness: 10%);
+    }
+  }
+
+  &__separator {
+    color: s.$color-muted;
+  }
+
+  &__calendar {
+    z-index: 30;
+    position: absolute;
+    left: -5%;
+    top: -10%;
+    width: 25rem;
+
+    @include s.respond-to("mobile-2") {
+      /* right: initial;
+      left: 0; */
+    }
+  }
+}

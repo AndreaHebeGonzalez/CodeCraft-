@@ -1,0 +1,20 @@
+@use '@/shared/styles/utils' as s;
+
+.project-status {
+
+  &--notStarted {
+    @include s.project-status-base('notStarted');
+  }
+
+  &--inProgress {
+    @include s.project-status-base('inProgress');
+  }
+
+  &--atRisk {
+    @include s.project-status-base('atRisk');
+  }
+
+  &--completed {
+    @include s.project-status-base('completed');
+  }
+}

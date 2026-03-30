@@ -1,0 +1,7 @@
+@use '@/shared/styles/utils' as s;
+
+.floating-action-menu {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}

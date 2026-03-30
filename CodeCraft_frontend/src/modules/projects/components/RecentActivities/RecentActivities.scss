@@ -1,0 +1,29 @@
+@use '@/shared/styles/utils' as s;
+
+
+.recent-activities {
+
+  background-color: s.$bg-cards;
+  border: 1px solid s.$border-cards;
+  border-radius: 1rem;
+
+
+  &__wrapper {
+    padding: 1.8rem 2.8rem;
+    border-bottom: 0.5px solid s.$border-cards;
+    @include s.flex(column, 0.5rem);
+
+    @include s.respond-to('tablet') {
+      padding: 2.5rem 3.5rem;
+    }
+  }
+
+  &__text {
+    @include s.flex(row, 0.1rem);
+  }
+
+  &__time {
+    font-style: italic;
+  }
+
+}

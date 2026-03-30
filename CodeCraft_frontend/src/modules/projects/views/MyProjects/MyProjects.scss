@@ -1,0 +1,23 @@
+@use '@/shared/styles/utils' as s;
+
+.my-projects {
+  position: relative;
+  max-width: s.$widthPercentMobile;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  @include s.respond-to("tablet-2") {
+    max-width: s.$widthPercent;
+  }
+
+  &__headers {
+    padding-bottom: 0 !important;
+  }
+
+  &__list {
+    @include s.flex(column, 3.5rem);
+    
+  }
+}

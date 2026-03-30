@@ -1,0 +1,47 @@
+@use '@/shared/styles/utils' as s;
+
+.task-indicators {
+  padding-bottom: 1.5rem;
+  
+
+  &__wrapper {
+    width: 50%;
+    @include s.flex(column, 0.5rem);
+
+    @include s.respond-to("mobile") {
+      justify-content: flex-start;
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+  
+
+  &__indicator {
+    align-items: center;
+    position: relative;
+    @include s.flex(row, 1rem);
+
+    @include s.respond-to("mobile-2") {
+      @include s.flex(row, rem);
+    }
+  }
+
+  &__item {
+    color: s.$text-grey
+  }
+
+  &__selector-wrapper {
+    z-index: 5;
+    position: absolute;
+    bottom: -5px;
+    left: 40%;
+    transform: translateY(100%);
+  }
+
+  &__line {
+    justify-content: center;
+    align-items: center;
+    @include s.flex(column)
+  }
+}
+

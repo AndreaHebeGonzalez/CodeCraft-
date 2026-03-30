@@ -1,0 +1,41 @@
+@use '@/shared/styles/utils' as s;
+
+
+.project-form {
+  width: 50vw;
+  @include s.flex(column, 2rem);
+
+  @include s.respond-to("tablet") {
+    @include s.flex(column, 2.5rem);
+  }
+
+
+
+  .project-form__content {
+    @include s.flex(column, 1.5rem);
+
+    @include s.respond-to("tablet") {
+      @include s.flex(column, 2.5rem);
+    }
+
+  }
+
+  &__wrapper {
+    flex-wrap: wrap;
+    width: 100%;
+    @include s.grid(1, 1.5rem);
+
+    @include s.respond-to("tablet") {
+      gap: 2.5rem;
+    }
+  }
+
+  &__first-column,
+  &__second-column {
+    @include s.grid(1, 1.5rem);
+
+    @include s.respond-to("tablet") {
+      @include s.grid(1, 2.5rem);
+    }
+  }
+}

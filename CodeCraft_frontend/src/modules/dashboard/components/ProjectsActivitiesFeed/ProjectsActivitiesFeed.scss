@@ -1,0 +1,9 @@
+@use '@/shared/styles/utils' as s;
+
+
+.recent-activities-dashboard {
+  
+  &__projects {
+    @include s.flex(column, 2rem);
+  }
+}

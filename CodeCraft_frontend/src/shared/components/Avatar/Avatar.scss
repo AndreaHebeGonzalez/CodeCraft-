@@ -1,0 +1,20 @@
+@use '@/shared/styles/utils' as s;
+
+.dev-card {
+  align-items: center;
+  @include s.flex(row, 1rem); 
+
+  &__avatar {
+    border-radius: 50%;
+    @include s.flex-center(row, 0);
+  }
+  
+
+  &__initials {
+    font-size: 1rem;
+  }
+
+  &__name {
+    font-size: 1rem;
+  }
+}

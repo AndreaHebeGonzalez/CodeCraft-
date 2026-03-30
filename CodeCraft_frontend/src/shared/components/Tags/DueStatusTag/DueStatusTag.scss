@@ -1,0 +1,22 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color'; 
+
+.due-status {
+  width: max-content;
+  &__wrapper {
+    font-size: 1.1rem;
+    padding: 0.4rem 2rem;
+    border-radius: 0.5rem;
+    
+
+    &--dueSoon {
+      background-color: s.$warning;
+      color: s.$black;
+    }
+    &--overdue {
+      background-color: s.$overdue;
+      color: s.$black;
+    }   
+
+  }
+}

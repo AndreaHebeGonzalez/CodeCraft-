@@ -1,0 +1,63 @@
+@use '@/shared/styles/utils' as s;
+
+
+.user-menu {
+  position: relative;
+
+  @include s.flex-center(row);
+
+  &__avatar {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    background-color: blue;
+    z-index: 1;
+    @include s.flex-center(row, 0);
+
+    p {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__icon-bg {
+    background-color: s.$bg-nav;
+    padding-left: 1.3rem;
+    transform: translate(-0.8em);
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    align-items: center;
+    justify-content: center;
+    @include s.flex(row);
+  }
+
+  &__icon-lg {
+    transform: translateX(-1px);
+  }
+
+  &__nav {
+    position: absolute;
+    right: 1rem;
+    top: calc(100% + 1rem);
+    width: max-content;
+    background-color: s.$bg-nav;
+    border-radius: 0.5rem;
+    height: 0;
+    overflow: hidden;
+    z-index: 50;
+  }
+
+  &__list {
+    padding: 1.5rem 3rem;
+    @include s.flex(column, 1rem)
+  }
+
+  &__item {
+    @include s.flex(row, 1rem);
+
+    img {
+      width: 2rem;
+      height: auto;
+    }
+  }
+
+}

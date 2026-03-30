@@ -1,0 +1,144 @@
+@use '@/shared/styles/utils' as s;
+@use "sass:map";
+@use 'sass:color';
+
+$spaces : (
+  "mobile-gap": 2rem,
+  "desktop-gap": 3rem
+);
+
+.task {
+  min-height: 100vh;
+  min-width: 50vw;
+  width: 80vw;
+  font-family: s.$secondary-font;
+  font-size: 1.4rem;
+  font-weight: 400;
+
+  @include s.flex(column, map.get($spaces, "mobile-gap"));
+
+  @include s.respond-to("tablet-2") {
+    width: 65vw;
+    @include s.flex(column, map.get($spaces, "desktop-gap"));
+  }
+
+  @include s.respond-to("desktop-2") {
+    width: 55vw;
+    @include s.flex(column, map.get($spaces, "desktop-gap"));
+  }
+
+  @include s.respond-to("desktop-4") {
+    width: 50vw;
+  }
+
+  &__meta {
+    @include s.flex(column, map.get($spaces, "mobile-gap"));
+
+    @include s.respond-to("tablet-2") {
+      @include s.flex(column, map.get($spaces, "desktop-gap"));
+    }
+  }
+
+  &__meta-top {
+    border-bottom: 0.5px solid s.$divider;
+    @include s.flex(column, 1rem);
+
+    @include s.respond-to("tablet-2") {
+      @include s.flex-between(row, 1rem);
+    }
+  }
+
+  &__name {
+    font-family: s.$primary-font;
+    font-size: 2.5rem;
+    outline: none;
+    border: none;
+    font-weight: 400;
+    resize: none;
+    padding: 0.5rem;
+  }
+
+  &__description-box {
+    width: 100%;
+    min-height: 8rem;
+    border-radius: 1rem;
+    border: 1px solid s.$border-cards;
+  }
+
+  &__description {
+    min-height: 100%;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: s.$text-secondary;
+    overflow-y: hidden;
+    
+
+    &::placeholder {
+      font-style: italic;
+      color: s.$color-muted;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid s.$divider
+  }
+
+  [class$="content"] {
+    padding: 1rem 2rem;
+    @include s.flex(column, 2rem);
+  }
+  
+  &__assignees,
+  &__subtasks {
+    @include s.flex(column, map.get($spaces, "mobile-gap"));
+
+    @include s.respond-to("tablet-2") {
+      @include s.flex(column, map.get($spaces, "desktop-gap"));
+    }
+  }
+
+  &__assignees-wrapper {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+
+    @include s.respond-to("tablet") {
+      max-width: 75%;
+    }
+  }
+
+  &__footer-tabs {
+    @include s.flex(column, 1rem);
+  }
+
+  &__tabs-header {
+    background-color: s.$bg-nav;
+    border-bottom: 1px solid s.$white;
+    @include s.flex(row, 1rem);
+  }
+
+  &__tab-button {
+    color: s.$white;
+    padding: 1rem;
+    font-family: s.$secondary-font;
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+
+    &.button-active {
+      background-color: color.adjust(s.$bg-nav, $lightness: 10%);
+    }
+  }
+}
+
+

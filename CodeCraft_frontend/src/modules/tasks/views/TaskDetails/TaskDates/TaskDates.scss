@@ -1,0 +1,34 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.task-dates {
+  
+  @include s.flex(column, 1.5rem);
+
+  @include s.respond-to("mobile-2") {
+    align-items: center;
+    @include s.flex(row, 3rem);
+  }
+
+  &__box {
+    align-items: center;
+    @include s.flex(row, 0.5rem);
+    
+    @include s.respond-to("mobile") {
+      @include s.flex(row, 1.5rem);
+    }
+  }
+
+  &__last-updated-box {
+    align-items: flex-start;
+    @include s.flex(row, 0.5rem);
+
+    & > * {
+      font-family: s.$secondary-font;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: italic;
+      color: s.$text-grey;
+    }
+  }
+}

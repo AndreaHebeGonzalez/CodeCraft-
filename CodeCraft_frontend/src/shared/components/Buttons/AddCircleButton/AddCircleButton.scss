@@ -1,0 +1,16 @@
+@use '@/shared/styles/utils' as s;
+
+
+.add-circle-button {
+  padding: 0.8rem;
+  border-radius: 50%;
+  background-color: s.$secondary-color;
+  margin: 1.5rem;
+
+  @include s.flex-center(row);
+
+  &__item {
+    display: block;
+    padding: 0.5rem 2rem;
+  }
+}

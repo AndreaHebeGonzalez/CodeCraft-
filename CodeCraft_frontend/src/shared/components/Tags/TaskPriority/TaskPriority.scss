@@ -1,0 +1,50 @@
+@use '@/shared/styles/utils' as s;
+
+.task-priority {
+  cursor: pointer;
+  @include s.flex-between(row);
+
+  &__wrapper {
+    align-items: center;
+    justify-content: start;
+    @include s.flex(row, 0.5rem);
+  }
+
+  &__icon-wrapper {
+    position: relative;
+  }
+
+  &__icon-md {
+    @include s.flex(row);
+    
+    &--low {
+      path {
+        @include s.task-priority-base('low');
+      }
+    }
+
+    &--medium {
+      path {
+        @include s.task-priority-base('medium')
+      }
+    }
+
+    &--high {
+      path {
+        @include s.task-priority-base('high')
+      }
+      
+    }
+
+    &--critical {
+      path {
+        @include s.task-priority-base('critical')
+      }
+    } 
+  }
+
+  &__text {
+    font-style: italic;
+    font-size: 1.4rem;
+  }
+}

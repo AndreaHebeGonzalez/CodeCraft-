@@ -1,0 +1,40 @@
+@use '@/shared/styles/utils' as s;
+
+
+.modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  z-index: 50;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: start;
+  align-items: center;
+  padding: 8rem 1rem;
+  @include s.flex(column);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+  }
+
+  
+  &__wrapper {
+    padding: 3rem 2.5rem;
+    width: max-content;
+    border: 1px solid s.$divider;
+    border-radius: 1rem;
+    background-color: s.$bg-primary;
+    align-items: center;
+    /* @include s.flex(column, 2.5rem); */
+    
+    @include s.respond-to("tablet-2") {
+      padding: 3.5rem 3rem;
+    }
+  }
+}

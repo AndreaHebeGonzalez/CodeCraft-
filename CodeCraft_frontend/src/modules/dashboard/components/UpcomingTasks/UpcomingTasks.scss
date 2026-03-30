@@ -1,0 +1,56 @@
+@use '@/shared/styles/utils' as s;
+
+
+.upcoming-tasks {
+  
+  @include s.flex(column, 2rem);
+
+  &__task {
+    position: relative;
+    background-color: s.$bg-cards;
+    padding: 2.5rem 3rem;
+    border-radius: 1rem;
+    border: 1px solid aqua;
+    @include s.flex-between(row);
+  }
+
+  &__left {
+    @include s.flex(column, 1rem);
+  }
+
+  &__name {
+    font-family: s.$secondary-font;
+    font-style: italic;
+    font-size: 1.6rem;
+  }
+
+  &__date-coll {
+    @include s.flex(row, 0.8rem);
+  }
+
+  &__end-date {
+    font-style: italic;
+  }
+
+  &__collaborators {
+    @include s.flex(row, 0.5rem);
+  }
+
+  &__right {
+    align-items: end;
+    @include s.flex(column, 1rem);
+  }
+
+  &__status {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  &__priority {
+    align-items: center;
+    @include s.flex(row, 1rem);
+  }
+
+}

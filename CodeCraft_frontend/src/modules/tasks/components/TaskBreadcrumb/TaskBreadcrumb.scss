@@ -1,0 +1,28 @@
+@use '@/shared/styles/utils' as s;
+
+
+.breadcrumb {
+  padding-bottom: 1.5rem;
+  @include s.flex(row, 0.2rem);
+
+  &__item {
+    min-width: 0;
+    align-items: center;
+    @include s.flex(row, 0.2rem);
+    
+    a {
+      color: s.$text-grey;
+      /* display: inline; */
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 10rem;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__arrow {
+    path {
+      stroke: s.$text-grey;
+    }
+  }
+}

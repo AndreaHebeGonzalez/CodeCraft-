@@ -1,0 +1,96 @@
+@use '@/shared/styles/utils' as s;
+
+.subtask {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  padding-left: 3rem;
+
+  &__checkbox {
+    position: absolute;
+    cursor: pointer;
+    left: 0;
+    opacity: 0;
+    transform: scale(1.3) translate(20%, 10%);
+    
+    &:checked ~ .subtask__checkbox-mark > .subtask__checkbox-mark-icon-md {
+      display: block;
+    }
+  }
+
+  &__checkbox-mark {
+    position:absolute;
+    left: 0;
+    height: 1.7rem;
+    width: 1.7rem;
+    border-radius: 0.2rem;
+    background-color: s.$border-cards;
+    pointer-events: none;
+    
+  }
+
+  &__checkbox-mark-icon-md {
+    display: none;
+    position: absolute;
+    top: -25%;
+    left: 20%;
+  }
+
+  &__name-actions {
+    position: relative;
+    align-items: center;
+    @include s.flex-between(row);
+  }
+
+  &__name,
+  &__delete {
+    z-index: 5;
+  }
+
+  &__name {
+    position: relative;
+    padding-left: 0.2rem;
+    width: 100%;
+
+    span {
+      display: inline-block;
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 18rem;
+    }
+  }
+
+  &__delete {
+    padding: 0 0.5rem;
+    position: relative;
+
+    svg {
+      position: relative;
+      z-index: 5;
+      transition: 
+        transform 0.15s ease,
+        opacity 0.15s ease;
+      
+      path {
+        transition: stroke 0.15s ease;
+      }
+    }
+
+    &:hover svg {
+      transform: scale(1.5);
+    }
+
+    &:active svg {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+
+    &:hover svg path {
+      stroke: s.$error-color;
+    }
+  }
+
+
+
+}

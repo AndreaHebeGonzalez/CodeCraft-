@@ -1,0 +1,55 @@
+@use '@/shared/styles/utils' as s;
+
+
+.project-details {
+  @include s.flex(column, 1rem);
+  
+  .project-details &__headers {
+    padding: 0;
+    width: s.$widthPercentMobile;
+    margin: 0 auto;
+
+    @include s.respond-to("tablet-2") {
+      max-width: s.$widthPercent;
+    }
+  }
+
+  &__wrapper {
+    @include s.flex(column, 2rem);
+  }
+
+  &__name {
+    outline: none;
+    resize: none;
+    border: none;
+    padding: 0;
+    font-family: s.$primary-font;
+    font-size: 2.8rem;
+    font-weight: 400;
+    
+    @include s.respond-to("tablet") {
+      font-size: 3rem;
+    }
+  }
+
+  &__description {
+    min-height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-weight: 300;
+    font-size: 1.5rem;
+    font-family: s.$secondary-font;
+    line-height: 2.2rem;
+    overflow-y: hidden;
+
+
+    &::placeholder {
+      color: s.$text-primary;
+    }
+    
+  }
+}
+
+
