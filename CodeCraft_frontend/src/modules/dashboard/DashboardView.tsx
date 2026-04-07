@@ -23,7 +23,7 @@ export default function DashboardView() {
       <div className='dashboard__wrapper'>
         <div className='dashboard__headers'>
           <h2>Hola Andrea, ¿Lista para Empezar?</h2>
-          <p>Aquí hay una descripción general rápida del progreso de tus tareas y proyectos. </p>
+          <p>Hoy tenes 3 tareas urgentes y dos atrasadas. </p>
         </div>
         <Overview />
         <div className='dashboard__upcoming-tasks'>

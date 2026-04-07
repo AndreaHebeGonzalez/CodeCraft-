@@ -1,6 +1,6 @@
 import { body } from "express-validator"
 import validator from "validator"
-import { projectStatus } from "../models/Project.model"
+import { projectStatus } from "../types"
 
 
 export const validateCreateProyect = [

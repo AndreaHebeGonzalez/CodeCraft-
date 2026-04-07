@@ -1,31 +1,8 @@
-import mongoose, { Schema, Document, PopulatedDoc, Types } from "mongoose";
-import { ITask } from '../types';
+import mongoose, { Schema, Types } from "mongoose";
+import { IProject, projectStatus } from '../types';
 
 
-export const projectStatus = {
-  NOT_STARTED: 'notStarted',
-  IN_PROGRESS: 'inProgress',
-  AT_RISK: 'atRisk',
-  COMPLETED: 'completed'
-} as const 
-
-export type ProjectStatus = typeof projectStatus[keyof typeof projectStatus]
-
-export interface IProject extends Document  {
-  projectName: string
-  clientName: string
-  description: string
-  startDate: Date | null
-  dueDate: Date | null
-  isOverdue: boolean
-  /* owner: mongoose.Types.ObjectId
-  collaborators: mongoose.Types.ObjectId[] */
-  tasks: PopulatedDoc<ITask & Document>[]
-  status: ProjectStatus,
-  
-}
-
-const ProjectSchema = new Schema(
+const ProjectSchema : Schema = new Schema(
   {
     projectName: {
       type: String,

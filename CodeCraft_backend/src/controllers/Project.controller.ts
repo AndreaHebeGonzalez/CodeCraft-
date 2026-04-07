@@ -1,7 +1,6 @@
 import type { Request, Response } from "express"
 import Project from "../models/Project.model"
 import Task from "../models/Task.model"
-import { deflateRaw } from "zlib"
 
 
 export class ProjectController {
@@ -18,19 +17,6 @@ export class ProjectController {
       res.status(500).json({ message: 'Error interno del servidor' })
     }
   }
-
-  /* 
-  Problemas:
-    any rompe el tipado
-    error.message no está garantizado
-    En 500 no deberías exponer mensajes internos
-    console.error debe estar tambien en produccion, suele:
-      ir a logs del servidor
-      ir a stdout / stderr
-      ser capturado por PM2, Docker, Railway, etc.
-      Más adelante puedes reemplazarlo por Winston, Pino, etc.
-      Pero no eliminarlo.
-  */
 
   static getAllProjects = async (req: Request, res: Response) => {
     try {

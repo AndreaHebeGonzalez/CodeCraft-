@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { param, validationResult } from "express-validator";
-import Project, { IProject } from "../models/Project.model"
+import Project from "../models/Project.model"
+import { IProject } from "../types";
 
 //Reescribir el scope global desde este modulo
 
