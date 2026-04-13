@@ -1,4 +1,3 @@
-import Logo from '@/assets/logo/CodeCraft.png'
 import { MenuClose, MenuOpen } from '@/assets/icon'
 import Button from '@/shared/components/Buttons/Button/Button'
 import Notification from './Notifications/Notification'
@@ -7,6 +6,7 @@ import useAppStore from '@/shared/stores/useAppStore'
 import { Link } from 'react-router-dom'
 import './Header.scss'
 import { DateGenerate } from '@/shared/utils/dateUtils'
+import Logo from '@/shared/components/Logo/Logo'
 
 type HeaderProps = {
   openMenu: boolean
@@ -52,12 +52,7 @@ const Header = ({ openMenu, handleOpenMenu } : HeaderProps) => {
               </Link>
             }
           </div>
-          <div className='header__logo'>
-            <Link to='/'>
-              <img src={Logo} alt="Logo" />
-              <h1 className='header__logo-text'>CodeCraft</h1>
-            </Link>
-          </div>
+          <Logo />
           <div className='header__right'>
               {
                 isTabletTwo &&

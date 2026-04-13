@@ -1,0 +1,18 @@
+@use '@/shared/styles/utils' as s;
+
+
+.oauth-btn {
+  background-color: s.$white;
+  border-radius: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  white-space: nowrap; 
+  font-family: s.$secondary-font;
+  font-size: 1.4rem;
+  padding: 1rem 0;
+  width: 100%;
+  @include s.flex(row, 1rem);
+
+  
+}

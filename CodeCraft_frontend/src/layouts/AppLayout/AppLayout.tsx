@@ -45,7 +45,8 @@ export default function AppLayout() {
 
 
   useEffect(() => {
-    initBreakpoints()
+    const cleanup = initBreakpoints()
+    return cleanup
   }, [])
 
   const [modalContent, setModalContent] = useState<ReactNode | null>(null)

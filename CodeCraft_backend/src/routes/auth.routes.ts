@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { AuthController } from "../controllers/auth.controller";
-import { validateCreateAccount, validateEmail, validateLogin, validateRegisterGoogle, validateToken } from "../validators/auth.validator";
+import { validateCreateAccount, validateEmail, validateEmailQuery, validateLogin, validateRegisterGoogle, validateToken } from "../validators/auth.validator";
 import { validateRequest } from "../middleware/validation";
 
 const router = Router()
@@ -13,5 +13,7 @@ router.post('/confirm-account', validateToken, validateRequest, AuthController.c
 router.post('/resend-confirmation', validateEmail, validateRequest, AuthController.resendConfirmation)
 
 router.post('login', validateLogin, validateRequest, AuthController.login)
+
+router.get('/email-exists', validateEmailQuery, validateRequest, AuthController.checkEmailExists)
 
 export default router

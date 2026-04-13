@@ -13,6 +13,7 @@ export const initBreakpoints = () => {
   }
 
   update()
+  
   window.addEventListener("resize", update)
 
   return () => window.removeEventListener("resize", update)

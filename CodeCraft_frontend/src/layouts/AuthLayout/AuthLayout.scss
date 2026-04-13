@@ -1,0 +1,107 @@
+@use '@/shared/styles/utils' as s;
+
+
+.auth-layout {
+  min-height: 100dvh; 
+  align-items: center;
+  justify-content: center;
+
+  @include s.flex(row);
+  
+
+
+  &__content {
+    padding: 2rem 0;
+    width: 32rem;
+    justify-content: center;
+    align-items: center;
+    @include s.flex(column);
+    
+    @include s.respond-to("tablet") {
+      padding: initial;
+      width: 100%;
+      @include s.flex(row);
+    }
+  }
+
+  &__left-column {
+    width: 100%;
+    padding: 1.5rem 0;
+    justify-content: end;
+    @include s.flex(column);
+
+
+    @include s.respond-to("tablet") {
+      flex-direction: row;
+      padding: 4rem;
+      flex-basis: 45%;
+      
+    }
+  }
+
+  &__left-column-content {
+    align-items: center;
+    @include s.flex(column, 1.5rem);
+
+    @include s.respond-to("tablet") {
+      min-width: 32rem;
+    }
+  }
+
+  &__call-to-actions {
+    justify-content: center;
+    align-items: center;
+    @include s.flex(column, 1rem);
+  }
+
+  &__cta-text {
+    font-family: s.$secondary-font;
+    font-size: 1.4rem;
+
+    &--link {
+      color: s.$secondary-color;
+    }
+  }
+
+  &__line-wrapper {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    @include s.flex(row, 0.5rem);
+
+    @include s.respond-to("tablet") {
+      margin: 0 2rem;
+    }
+
+    span {
+      font-family: s.$secondary-font;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: s.$white;
+    
+
+    @include s.respond-to("tablet") {
+      align-self: stretch;
+      flex-grow: initial;
+      height: auto;
+      width: 1px;
+    }
+  }
+
+  &__right-column {
+    width: 100%;
+    padding: 1.5rem 0;
+
+    @include s.respond-to("tablet") {
+      
+      padding: 4rem;
+      flex-basis: 55%;
+    }
+  }
+
+}

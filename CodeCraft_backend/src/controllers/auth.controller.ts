@@ -10,7 +10,9 @@ import { sanitizeUser } from "../utils/user"
 export class AuthController {
 
   static createAccount = async (req: Request, res: Response) => {
+
     const session = await mongoose.startSession()
+
     try {
       const { name, email, password } = req.body
 
@@ -187,6 +189,20 @@ export class AuthController {
   static googleAuth  = async (req: Request , res: Response) => {
     console.log(req.body)
     res.send('desde api/auth')
+  }
+
+  static checkEmailExists = async (req: Request, res: Response) => {
+    try {
+      const { email } = req.query as { email: string }
+
+      const emailExists = await User.exists({ email })
+
+      return res.json({ exist: !!emailExists })
+
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ message: 'Error interno del servidor' })
+    }
   }
 
 }

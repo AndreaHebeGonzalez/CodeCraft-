@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+import { body, query } from "express-validator";
 
 export const validateCreateAccount = [
   body('name')
@@ -11,7 +11,7 @@ export const validateCreateAccount = [
   body('password')
     .notEmpty().withMessage('La contraseña es obligatoria')
     .isLength({min:8}).withMessage('La contraseña debe contener como minimo 8 caracteres'),
-  body('password_confirmation')
+  body('repeatPassword')
     .notEmpty().withMessage('Debes confirmar la contraseña')
     .custom((value, { req }) => {
       if(value !== req.body.password) {
@@ -31,10 +31,23 @@ export const validateToken = [
 ]
 
 export const validateLogin = [
-  body('email').notEmpty().withMessage('El email es obligatorio'),
+  body('email')
+  .notEmpty().withMessage('El email es obligatorio')
+  .isEmail().withMessage('Formato de email inválido')
+  .normalizeEmail(),
   body('password').notEmpty().withMessage('La contraseña es obligatoria')
 ]
 
 export const validateEmail = [
-  body('email').notEmpty().withMessage('El email es obligatorio')
+  body('email')
+    .notEmpty().withMessage('El email es obligatorio')
+    .isEmail().withMessage('Formato de email inválido')
+    .normalizeEmail()
+]
+
+export const validateEmailQuery = [
+  query('email')
+    .notEmpty().withMessage('El email es requerido')
+    .isEmail().withMessage('Formato de email inválido')
+    .normalizeEmail()
 ]

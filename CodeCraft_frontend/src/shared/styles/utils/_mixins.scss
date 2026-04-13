@@ -3,18 +3,18 @@
 @use 'sass:color';
 
 
-
 /* Botones */
 
 @mixin button-base($bg-color, $color, $border) {
   background-color: $bg-color;
   color: $color;
-  font-family: v.$primary-font;
+  font-family: v.$secondary-font;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   border: $border;
   width: max-content;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     font-size: 1.4rem;

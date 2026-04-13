@@ -1,5 +1,8 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import AuthLayout from "./layouts/AuthLayout/AuthLayout";
+import Login, { loginConfig } from "./modules/auth/views/Login";
+import Register, { registerConfig } from "./modules/auth/views/Register";
 
 /* ========= LAYOUT ========= */
 const AppLayout = lazy(() =>
@@ -38,8 +41,11 @@ const ProjectCalendar = lazy(() =>
 
 /* ========= ROUTER ========= */
 export const router = createBrowserRouter([
+
+  /* ========= APP (PROTEGIDA) ========= */
+
   {
-    path: "*",
+    path: "/",
     element: (
       <Suspense fallback={<div>Cargando...</div>}>
         <AppLayout />
@@ -99,15 +105,45 @@ export const router = createBrowserRouter([
             )
           }
         ]
-      },
-      {
-        path: "404",
-        element: (
-          <Suspense fallback={<div>Cargando error...</div>}>
-            <ErrorPage />
-          </Suspense>
-        )
       }
     ]
+  },
+
+  /* ========= AUTH ========= */
+
+  {
+    id:"auth",
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      {
+        id:"login",
+        path: 'login',
+        element: <Login />,
+        handle: {
+          authConfig: loginConfig
+        }
+      },
+      {
+        id:"register",
+        path: 'register',
+        element: <Register />,
+        handle: {
+          authConfig : registerConfig
+        }
+      }
+    ]
+  },
+
+  /* ========= 404 ========= */
+  
+  {
+    path: "*",
+    element: (
+      <Suspense fallback={<div>Cargando error...</div>}>
+        <ErrorPage />
+      </Suspense>
+    )
   }
+
 ]);

@@ -45,12 +45,12 @@ ul {
   list-style: none;
 }
 
-[class$="field-row"] {
+.field-row {
   @include m.flex(row, 1rem);
 }
 
-[class$="field-column"] {
-  @include m.flex(column, 1rem);
+.field-column {
+  @include m.flex(column, 0.8rem);
 }
 
 [class*="icon-xlg"] {
@@ -103,6 +103,12 @@ input, textarea {
   color: v.$text-primary;
   font-family: v.$secondary-font;
   font-size: 1.4rem;
+}
+
+input {
+  border: none;
+  outline: none;
+  padding: 0.1rem 0.5rem; 
 }
 
 a {

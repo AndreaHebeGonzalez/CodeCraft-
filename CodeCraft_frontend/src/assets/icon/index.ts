@@ -39,6 +39,9 @@ import InProgressIcon from './in-progress-icon.svg?react'
 import UnderReviewIcon from './under-review-icon.svg?react'
 import CompletedIcon from './completed-icon.svg?react'
 import Line from './divisor.svg?react'
+import GoogleIcon from './logos--google-icon.svg?react'
+import Eye from './eye.svg?react'
+import EyeClosed from './eye-closed.svg?react'
 
 
 const statusIconMap = {
@@ -86,6 +89,9 @@ export {
   Delete,
   Edit,
   statusIconMap,
-  Line
+  Line,
+  GoogleIcon,
+  Eye,
+  EyeClosed
 }
 

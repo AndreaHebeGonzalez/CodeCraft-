@@ -1,0 +1,40 @@
+@use '@/shared/styles/utils' as s;
+
+
+.logo {
+
+  &__link {
+    @include s.flex-center(row, 1rem);
+
+    &--column {
+      @include s.flex-center(column, 0);
+    }
+  }
+  
+
+  &__text {
+    font-weight: 400;
+    font-size: 2.3rem;
+    font-family: s.$logo-font;
+  }
+
+  &__img {
+    width: 3rem;
+    height: auto;
+
+    @include s.respond-to('tablet-2') {
+      width: 4rem;
+    }
+
+    &--auth {
+      width: 4rem;
+      height: auto;
+
+      @include s.respond-to('tablet-2') {
+        width: 5rem;
+      }
+    }
+  }
+
+  
+}
