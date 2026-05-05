@@ -11,11 +11,9 @@ const Logo = () => {
 
   const isAuthRoute = matches.some(m => m.id === 'auth')
 
-  console.log(isTablet)
-
   return (
     <div className='logo'>
-      <Link to='/' className={`logo__link ${isAuthRoute  ? 'logo__link--column':''}`}>
+      <Link to={isAuthRoute ? '/auth/login':'/'} className={`logo__link ${isAuthRoute  ? 'logo__link--column':''}`}>
         <img src={logo} alt="CodeCraft logo"  className={`logo__img ${isAuthRoute ? 'logo__img--auth':''}`}/>
         {
           isAuthRoute && isTablet &&
@@ -26,7 +24,6 @@ const Logo = () => {
           !isAuthRoute &&
           <h1 className='logo__text'>CodeCraft</h1>
         }
-        
       </Link>
     </div>
   )

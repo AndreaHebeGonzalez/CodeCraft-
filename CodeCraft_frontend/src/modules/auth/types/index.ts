@@ -1,5 +1,5 @@
 import type z from "zod";
-import type { EmailExistsResponseSchema, LoginFormSchema, RegisterFormSchema } from "../schemas";
+import type { EmailExistsResponseSchema, RegisterFormSchema } from "../schemas";
 
 export type AuthViewConfig = {
   mode: "login" | "register"
@@ -17,7 +17,9 @@ export type AuthViewConfig = {
 
 export type RegisterFormData = z.infer<typeof RegisterFormSchema>
 
-export type LoginFormData = z.infer<typeof LoginFormSchema>
+export type LoginFormData = Pick<RegisterFormData, 'email' | 'password'>
+
+/* Respuestas */
 
 export type EmailExistsResponse = z.infer<typeof EmailExistsResponseSchema>
 

@@ -33,7 +33,6 @@ const Calendar = ({ startDateInputRef, dueDateInputRef, clearSelectedFrom, clear
     return <RightArrow {...rest} />
   }
 
-
   return (
     <div className='calendar'>
       <div className='calendar__date-fields'>

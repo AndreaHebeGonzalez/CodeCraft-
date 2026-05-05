@@ -15,11 +15,10 @@ export class AuthController {
 
     try {
       const { name, email, password } = req.body
-
       const userExists = await User.findOne({ email }).lean()
-    
-      if(userExists) {
-        return res.status(409).json({ message: 'El email ingresado ya esta registrado'})
+
+      if (userExists) {
+        return res.status(409).json({ message: 'El email ingresado ya esta registrado'}) 
       }
 
       session.startTransaction()
@@ -34,7 +33,7 @@ export class AuthController {
       })
 
       await user.save({ session })
-
+      
       const token = new Token({
         token: generateToken(),
         user: user._id
@@ -51,13 +50,16 @@ export class AuthController {
       })
 
       await session.commitTransaction()
-      res.status(201).json({ message: 'Cuenta creada, revisa tu email para confirmarla.' })
-        
+
+      res.status(201).json({ message: 'Cuenta creada, revisa tu email para confirmarla.' }) 
+    
     } catch (error) {
-      await session.abortTransaction()
+      await session.abortTransaction() 
+
       if(error.code === 11000) {
         return res.status(409).json({ message: 'El email ingresado ya esta registrado'})
       }
+
       console.error(error)
       res.status(500).json({ message: 'Error interno del servidor' })
 
@@ -194,15 +196,14 @@ export class AuthController {
   static checkEmailExists = async (req: Request, res: Response) => {
     try {
       const { email } = req.query as { email: string }
-
+      
       const emailExists = await User.exists({ email })
 
       return res.json({ exist: !!emailExists })
-
+      
     } catch (error) {
       console.error(error)
       res.status(500).json({ message: 'Error interno del servidor' })
     }
   }
-
 }

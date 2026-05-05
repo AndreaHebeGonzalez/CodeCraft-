@@ -12,11 +12,12 @@ type ProjectApi = {
   value: string | { from?: Date, to?: Date } 
 }
 
-export async function createProject(projectFormData : ProjectApi['projectFormData']) : Promise<ApiResponse>  {
-  try {
-    const { data } = await api.post<ApiResponse>('/projects', projectFormData )
-    return data
 
+
+export async function createProject(projectFormData : ProjectApi['projectFormData']) : Promise<ApiResponse<{ projectId: Project['_id'] }>>  {
+  try {
+    const { data } = await api.post<ApiResponse<{ projectId: Project['_id'] }>>('/projects', projectFormData)
+    return data
   } catch (error) {
     if(isAxiosError(error)) {
       if(error.response) {
@@ -85,7 +86,7 @@ export async function getProjectById(id : Project['_id']) : Promise<Project>{
   }
 }
 
-export async function updateProjectField({ projectId, field, value } : Pick<ProjectApi, 'projectId'|'field'|'value'>) : Promise<ApiResponse>  {
+export async function updateProjectField({ projectId, field, value } : Pick<ProjectApi, 'projectId'|'field'|'value'>) : Promise<ApiResponse<never>>  {
   try {
     let formData
     /* Desarrollar valores de formData */
@@ -101,7 +102,7 @@ export async function updateProjectField({ projectId, field, value } : Pick<Proj
       }
     }
 
-    const { data } = await api.patch<ApiResponse>(`/projects/${projectId}`, formData )
+    const { data } = await api.patch<ApiResponse<never>>(`/projects/${projectId}`, formData )
 
     return data
 
@@ -124,9 +125,9 @@ export async function updateProjectField({ projectId, field, value } : Pick<Proj
   }
 }
 
-export async function deleteProject(id : Project['_id']) : Promise<ApiResponse> {
+export async function deleteProject(id : Project['_id']) : Promise<ApiResponse<never>> {
   try {
-    const { data } = await api.delete<ApiResponse>(`/projects/${id}`) 
+    const { data } = await api.delete<ApiResponse<never>>(`/projects/${id}`) 
     return data
   } catch (error) {
     if(isAxiosError(error)) {

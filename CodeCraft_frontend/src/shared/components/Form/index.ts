@@ -1,6 +1,6 @@
-export { default as FormInput } from './FormInput/FormInput'
-export { default as FormTextarea } from './FormTextArea/FormTextarea'
-export { default as FormFieldError } from './FormFieldError/FormFieldError'
-export { default as Calendar } from './Calendar/Calendar'
+export { default as FormInput } from './form-input/FormInput'
+export { default as FormTextArea } from './form-text-area/FormTextArea'
+export { default as FormFieldError } from './form-field-error/FormFieldError'
+export { default as Calendar } from './calendar/Calendar'
 
 

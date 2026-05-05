@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginFormSchema } from "../schemas"
 import type { AuthViewConfig, LoginFormData } from "../types"
-import Button from "@/shared/components/Buttons/Button/Button"
-import { FormInput } from "@/shared/components/Form"
+import Button from "@/shared/components/buttons/button/Button"
+import { FormInput } from "@/shared/components/form"
 import './FormStyles.scss'
 
 export const loginConfig : AuthViewConfig = {

@@ -1,0 +1,26 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.error-alert {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
+  padding: 1rem;
+  background-color: color.adjust(s.$error-color, $lightness: -35%);
+  border: 1px solid s.$error-color;
+  border-radius: 0.5rem;
+  align-items: center;
+  @include s.flex(row, 0.5rem);
+
+  &__text {
+    color: s.$white;
+  }
+
+  &__icon-lg {
+    path {
+      fill: s.$error-color
+    }
+  }
+}

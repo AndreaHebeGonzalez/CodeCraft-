@@ -9,6 +9,13 @@ export type ModalState = {
 export type DueStatus = keyof typeof dueStatusLabels
 
 
-export type ApiResponse = {
-  message: string
+export type ApiResponse<T> = { 
+  message: string, 
+  data?: T 
 }
+
+export type ApiErrorResponse<T> = {
+  message: string
+  error?: T
+}
+

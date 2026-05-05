@@ -11,32 +11,32 @@ const AppLayout = lazy(() =>
 
 /* ========= VISTAS PRINCIPALES ========= */
 const DashboardView = lazy(() =>
-  import("./modules/dashboard/DashboardView")
+  import("./modules/dashboard/view/dashboard-view/DashboardView")
 );
 
 const MyProjects = lazy(() =>
-  import("./modules/projects/views/MyProjects/MyProjects")
+  import("./modules/projects/views/my-projects/MyProjects")
 );
 
 const ErrorPage = lazy(() =>
-  import("./shared/components/Error/ErrorPage/ErrorPage")
+  import("./shared/components/errors/error-page/ErrorPage")
 );
 
 /* ========= PROJECT DETAILS ========= */
 const ProjectDetails = lazy(() =>
-  import("./modules/projects/views/ProjectDetails/ProjectDetails")
+  import("./modules/projects/views/project-details/ProjectDetails")
 );
 
 const ProjectSummary = lazy(() =>
-  import("./modules/projects/views/ProjectDetails/ProjectSummary/ProjectSummary")
+  import("./modules/projects/views/project-details/project-summary/ProjectSummary")
 );
 
 const ProjectTask = lazy(() =>
-  import("./modules/projects/views/ProjectDetails/ProjectTasks/ProjectTask")
+  import("./modules/projects/views/project-details/project-tasks/ProjectTask")
 );
 
 const ProjectCalendar = lazy(() =>
-  import("./modules/projects/views/ProjectDetails/ProjectCalendar/ProjectCalendar")
+  import("./modules/projects/views/project-details/project-calendar/ProjectCalendar")
 );
 
 /* ========= ROUTER ========= */

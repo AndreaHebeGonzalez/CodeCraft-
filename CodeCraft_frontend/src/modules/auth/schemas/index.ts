@@ -12,7 +12,7 @@ export const RegisterFormSchema = z.object({
   .min(1, "El email es obligatorio")
   .email({
       message: "Formato de email inválido"
-    }),
+    }) ,
   password: z
   .string()
   .trim()
@@ -43,6 +43,10 @@ export const LoginFormSchema = z.object({
     .trim()
 })
 
+
+/* Response */
+
 export const EmailExistsResponseSchema = z.object({
   exist: z.boolean()
 })
+

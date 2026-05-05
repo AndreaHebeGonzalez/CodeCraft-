@@ -1,12 +1,12 @@
 import { MenuClose, MenuOpen } from '@/assets/icon'
-import Button from '@/shared/components/Buttons/Button/Button'
-import Notification from './Notifications/Notification'
-import UserMenu from './UserMenu/UserMenu'
+import Button from '@/shared/components/buttons/button/Button'
+import Notification from './notifications/Notification'
+import UserMenu from './user-menu/UserMenu'
 import useAppStore from '@/shared/stores/useAppStore'
 import { Link } from 'react-router-dom'
 import './Header.scss'
 import { DateGenerate } from '@/shared/utils/dateUtils'
-import Logo from '@/shared/components/Logo/Logo'
+import Logo from '@/shared/components/logo/Logo'
 
 type HeaderProps = {
   openMenu: boolean

@@ -42,7 +42,7 @@ import Line from './divisor.svg?react'
 import GoogleIcon from './logos--google-icon.svg?react'
 import Eye from './eye.svg?react'
 import EyeClosed from './eye-closed.svg?react'
-
+import ErrorX from './error-x-icon.svg?react'
 
 const statusIconMap = {
   pending: PendingIcon,
@@ -92,6 +92,7 @@ export {
   Line,
   GoogleIcon,
   Eye,
-  EyeClosed
+  EyeClosed,
+  ErrorX
 }
 

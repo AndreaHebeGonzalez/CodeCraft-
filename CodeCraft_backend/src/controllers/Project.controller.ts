@@ -6,12 +6,10 @@ import Task from "../models/Task.model"
 export class ProjectController {
 
   static createProjects = async (req: Request, res: Response) => {
-  
-    const project = new Project(req.body) //Crea una instancia del Proyect
-    //Se almacena esa instancia en la BD
     try { 
+      const project = new Project(req.body)
       await project.save()
-      res.status(201).json({ message: 'Proyecto creado correctamente' })
+      res.status(201).json({ message: 'Proyecto creado correctamente', data: { projectId: project._id } })
     } catch (error) {
       console.error(error)
       res.status(500).json({ message: 'Error interno del servidor' })

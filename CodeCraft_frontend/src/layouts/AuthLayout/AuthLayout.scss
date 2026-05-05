@@ -2,15 +2,15 @@
 
 
 .auth-layout {
+  position: relative;
   min-height: 100dvh; 
   align-items: center;
   justify-content: center;
-
   @include s.flex(row);
   
-
-
+  
   &__content {
+    
     padding: 2rem 0;
     width: 32rem;
     justify-content: center;

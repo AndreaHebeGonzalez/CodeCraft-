@@ -3,26 +3,27 @@ import { lazy, Suspense } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import useAppStore from "@/shared/stores/useAppStore"
 import useOpenElement from "@/shared/hooks/useOpenElement"
-import Header from "./components/Header/Header"
-import Sidebar from "./components/Sidebar/Sidebar"
-import Modal from "@/shared/components/Modal/Modal"
-import AppNotification from "@/shared/components/AppNotification/AppNotification"
+import Header from "./components/header/Header"
+import Sidebar from "./components/sidebar/Sidebar"
+import Modal from "@/shared/components/modal/Modal"
+import AppNotification from "@/shared/components/feedback/app-notification/AppNotification";
+
 
 
 const ProjectForm = lazy(() =>
-  import("@/modules/projects/components/ProjectForm/ProjectForm")
+  import("@/modules/projects/components/project-form/ProjectForm")
 )
 
 const TaskForm = lazy(() =>
-  import("@/modules/tasks/components/TaskForm/TaskForm")
+  import("@/modules/tasks/components/task-form/TaskForm")
 )
 
 const TaskDetails = lazy(() =>
-  import("@/modules/tasks/views/TaskDetails/TaskDetails")
+  import("@/modules/tasks/views/task-details/TaskDetails")
 )
 
 const FloatingActionMenu = lazy(() =>
-  import("@/shared/components/FloatingActionMenu/FloatingActionMenu")
+  import("@/shared/components/floating-action-menu/FloatingActionMenu")
 )
 
 import './AppLayout.scss'

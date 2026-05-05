@@ -5,8 +5,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Check, Close } from "@/assets/icon"
 import type { SubtaskType } from "../../../types"
 import { deleteTask, updateTaskField } from "../../../services"
-import { TruncatedTextTooltip } from "@/shared/components/Tooltips/TruncatedTextTooltip/TruncatedTextTooltip"
-import StatusBanner from "@/shared/components/StatusBanner/StatusBanner"
+import { TruncatedTextTooltip } from "@/shared/components/tooltips/truncated-text-tooltip/TruncatedTextTooltip"
+import StatusBanner from "@/shared/components/tags/status-banner/StatusBanner"
 
 import './SubtaskItem.scss'
 

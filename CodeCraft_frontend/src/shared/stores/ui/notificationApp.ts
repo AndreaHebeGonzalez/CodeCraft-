@@ -2,7 +2,7 @@ import type { StateCreator } from "zustand";
 
 export type NotificationApp = {
   showNotification: boolean
-  text: string
+  textNotification: string
   isError: boolean
   openNotification: (text: string, isError?: boolean) => void
   closeNotification: () => void
@@ -11,19 +11,19 @@ export type NotificationApp = {
 
 export const notificationApp : StateCreator<NotificationApp>= (set) => ({
   showNotification: false,
-  text: '',
+  textNotification: '',
   isError: false,
   openNotification: (text, isError = false) => {
     set({
       showNotification: true,
-      text,
+      textNotification: text,
       isError
     })
   },
   closeNotification: () => {
     set({
       showNotification: false,
-      text: ''
+      textNotification: ''
     })
   },
   setIsError: (value) => {

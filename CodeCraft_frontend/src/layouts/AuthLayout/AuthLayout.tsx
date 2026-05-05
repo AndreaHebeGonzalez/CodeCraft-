@@ -1,11 +1,12 @@
 import { useEffect } from "react"
 import { Link, Outlet, useMatches } from "react-router-dom"
 import type { AuthViewConfig } from "@/modules/auth/types"
-import OAuthButtons from "@/shared/components/Buttons/OAuthButtons/OAuthButtons"
+import OAuthButtons from "@/shared/components/buttons/o-auth-buttons/OAuthButtons"
 import { initBreakpoints } from "@/shared/utils/breakpoint"
 import useAppStore from "@/shared/stores/useAppStore"
-import Logo from "@/shared/components/Logo/Logo"
+import Logo from "@/shared/components/logo/Logo"
 import './AuthLayout.scss'
+import ErrorBanner from "@/shared/components/feedback/error-banner/ErrorBanner"
 
 const hasAuthConfig = (handle: unknown) : handle is { authConfig: AuthViewConfig } => {
   return (
@@ -66,6 +67,7 @@ const AuthLayout = () => {
           <Outlet />
         </div> 
       </div>
+      <ErrorBanner />
     </div>
   )
 }

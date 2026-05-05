@@ -1,49 +1,49 @@
-import api from "@/lib/axios";
-import { EmailExistsResponseSchema } from "../schemas";
-import { isAxiosError } from "axios";
+import api from "@/lib/axios"
+import { EmailExistsResponseSchema } from "../schemas"
+import type {  ApiResponse } from "@/shared/types"
+import type { RegisterFormData } from "../types"
+import { handleAppError } from "@/shared/error/handleAppError"
+import { isAxiosError } from "axios"
 
 
-type AuthApi = {
-  name: string,
-  email: string,
-  passwod: string,
-  repeatPassword: string
-}
 
-export async function checkEmailExist( email : AuthApi['email']) {
+export async function checkEmailExist( email : RegisterFormData['email']) {
   try {
     const { data } = await api('/auth/email-exists', { params: { email }})
+
     const result = EmailExistsResponseSchema.safeParse(data)
 
     if(!result.success) {
-      console.error('Validación fallida')
-      throw new Error('Respuesta inválida')
+      console.error("Ocurrió un error al procesar los datos", result.error)
+      return undefined
     }
 
-    console.log(result.data)
     return result.data.exist
+
   } catch (error) {
+
     if(isAxiosError(error)) {
+      console.log(error)
       if(error.response) {
-        throw new Error(error.response.data.message)
-      } else if(error.request) {
-        console.error('Se envió la petición pero no hubo respuesta:', error.request);
-        throw new Error('Se envío la petición pero no hubo respuesta')
+        const { data } = error.response
+        console.error(data)
       } else {
-        console.log('Error al configurar la petición:', error.message)
-        throw new Error('Error al configurar la petición')
+        console.error(error)
       }
     } else {
-      console.log('Error inesperado:', error)
-      throw new Error('Error inesperado')
-    } 
+      console.error(error)
+    }
+    return undefined
   }
 }
 
-export async function register() {
+export async function createAccount (formData : RegisterFormData) : Promise<ApiResponse<never>>{
   try {
-    
+    const { data } = await api.post<ApiResponse<never>>('/auth/create-account', formData)
+    console.log(data)
+    return data
+
   } catch (error) {
-    
+    handleAppError(error)
   }
 }
