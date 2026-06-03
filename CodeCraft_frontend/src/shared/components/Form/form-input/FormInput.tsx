@@ -5,6 +5,7 @@ import { Eye, EyeClosed } from "@/assets/icon"
 
 
 type FormInputProps = {
+  inputVariant?: string
   Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>> 
   onIconClick?: () => void
   id: string
@@ -12,7 +13,7 @@ type FormInputProps = {
   error?: string
 } & InputHTMLAttributes<HTMLInputElement>
 
-const FormInput = forwardRef<HTMLInputElement, FormInputProps>(({Icon, onIconClick, id, label, type, error, ...props }, ref) => {
+const FormInput = forwardRef<HTMLInputElement, FormInputProps>(({inputVariant, Icon, onIconClick, id, label, type, error, ...props }, ref) => {
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -28,9 +29,9 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(({Icon, onIconCli
           {label}
         </label>
       }
-      <div className={"field-column__input-wrapper"}>
+      <div className={`field-column__input-wrapper ${inputVariant && `field-column__input-wrapper--${inputVariant}`}`}>
         <input 
-          className={id.includes('password') ? 'field-column__input-width-icon':''}
+          className={`${id.includes('password') ? 'field-column__input-width-icon':''}`}
           type={id.includes('password') ? showPassword ? 'text':'password': type}
           id={id}
           ref={ref} 

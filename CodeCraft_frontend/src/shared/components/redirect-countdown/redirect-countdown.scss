@@ -1,0 +1,7 @@
+@use '@/shared/styles/utils' as s;
+
+
+.redirect-countdown {
+  align-items: center;
+  @include s.flex(row, 1rem)
+}

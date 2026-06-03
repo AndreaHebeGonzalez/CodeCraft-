@@ -1,8 +1,9 @@
 @use '@/shared/styles/utils' as s;
 
 .auth-forms {
+  position: relative;
   max-width: 400px;
-  @include s.flex(column, 1.5rem);
+  @include s.flex(column, 1rem);
 
   @include s.respond-to("tablet") {
     width: 95%;
@@ -14,22 +15,6 @@
 
   @include s.respond-to("desktop-2") {
     width: 70%;
-  }
-
-  &__title {
-    font-size: 2rem;
-  }
-
-  &__text {
-    font-family: s.$secondary-font;
-
-    &--accent {
-      color: s.$secondary-color;
-    }
-  }
-
-  &__text {
-    font-size: 1.4rem;
   }
 
   &__form {

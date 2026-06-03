@@ -5,6 +5,7 @@ import './AddCollaborator.scss'
 
 
 const AddCollaborator = () => {
+  
   return (
     <div className="add-collaborator">
       <div className="add-collaborator__wrapper">

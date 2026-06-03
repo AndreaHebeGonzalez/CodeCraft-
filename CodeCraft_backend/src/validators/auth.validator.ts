@@ -1,4 +1,24 @@
-import { body, query } from "express-validator";
+import { body, param, query, ValidationChain } from "express-validator";
+
+
+export const passwordValidation : ValidationChain[] = [
+  body('password')
+    .notEmpty().withMessage('La contraseña es obligatoria')
+    .isLength({ min: 8 })
+    .withMessage('La contraseña debe contener como minimo 8 caracteres')
+]
+
+export const repeatPasswordValidation : ValidationChain[] = [
+  body('repeatPassword')
+    .notEmpty().withMessage('Debes confirmar la contraseña')
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Las contraseñas no coinciden')
+      }
+
+      return true
+    })
+]
 
 export const validateCreateAccount = [
   body('name')
@@ -8,7 +28,9 @@ export const validateCreateAccount = [
     .notEmpty().withMessage('El email es obligatorio')
     .isEmail().withMessage('Email no valido')
     .normalizeEmail(),
-  body('password')
+  ...passwordValidation,
+  ...repeatPasswordValidation
+  /* body('password')
     .notEmpty().withMessage('La contraseña es obligatoria')
     .isLength({min:8}).withMessage('La contraseña debe contener como minimo 8 caracteres'),
   body('repeatPassword')
@@ -18,7 +40,7 @@ export const validateCreateAccount = [
         throw new Error('Las contraseñas no coinciden')
       }
       return true
-    }),
+    }), */
 ]
 
 export const validateRegisterGoogle = [
@@ -27,7 +49,13 @@ export const validateRegisterGoogle = [
 ];
 
 export const validateToken = [
-  body('token').notEmpty().withMessage('El token no puede ir vacio')
+  body('token')
+  .matches(/^\d{6}$/).withMessage('Token no válido')
+]
+
+export const validateTokenParam = [
+  param('token')
+  .matches(/^\d{6}$/).withMessage('Token no válido')
 ]
 
 export const validateLogin = [
@@ -50,4 +78,9 @@ export const validateEmailQuery = [
     .notEmpty().withMessage('El email es requerido')
     .isEmail().withMessage('Formato de email inválido')
     .normalizeEmail()
+]
+
+export const validatePassword = [
+  ...passwordValidation,
+  ...repeatPasswordValidation
 ]

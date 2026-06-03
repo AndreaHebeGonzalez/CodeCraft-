@@ -30,15 +30,13 @@ export function handleAppError(error : unknown) : never {
 
     const { status, data } = error.response
 
-    console.log(data)
-
     if (status === 400) {
       throw new AppError({
         kind: "validation",
         userMessage: data?.message || "Datos inválidos",
         technicalMessage: `400 response: ${JSON.stringify(data)}`,
         status,
-        details: data?.errors || data
+        details: data?.errors || undefined
       })
     }
 
@@ -63,7 +61,7 @@ export function handleAppError(error : unknown) : never {
 
     throw new AppError({
       kind: "http",
-      userMessage: "Ocurrió un problema en el servidor",
+      userMessage: data?.message || "Ocurrió un problema en el servidor",
       technicalMessage: `HTTP ${status}: ${JSON.stringify(data)}`,
       details: data
     })

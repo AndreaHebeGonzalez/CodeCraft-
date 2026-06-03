@@ -16,7 +16,6 @@ type HeaderProps = {
 const Header = ({ openMenu, handleOpenMenu } : HeaderProps) => {
 
   const { isTabletTwo } = useAppStore()
-  console.log(openMenu)
 
   const { showNotification } = useAppStore()
   

@@ -1,8 +1,13 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import { Loading } from "./shared/components/loading/Loading";
 import AuthLayout from "./layouts/AuthLayout/AuthLayout";
-import Login, { loginConfig } from "./modules/auth/views/Login";
-import Register, { registerConfig } from "./modules/auth/views/Register";
+import Login from "./modules/auth/views/Login";
+import Register from "./modules/auth/views/Register";
+import ConfirmAccount from "./modules/auth/views/ConfirmAccount";
+import RequestNewCode from "./modules/auth/views/RequestNewCode";
+import ForgotPassword from "./modules/auth/views/ForgotPassword";
+import NewPassword from "./modules/auth/views/NewPassword";
 
 /* ========= LAYOUT ========= */
 const AppLayout = lazy(() =>
@@ -47,7 +52,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<div>Cargando...</div>}>
+      <Suspense fallback={<Loading />}>
         <AppLayout />
       </Suspense>
     ),
@@ -55,7 +60,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<div>Cargando dashboard...</div>}>
+          <Suspense fallback={<Loading />}>
             <DashboardView />
           </Suspense>
         )
@@ -63,7 +68,7 @@ export const router = createBrowserRouter([
       {
         path: "projects",
         element: (
-          <Suspense fallback={<div>Cargando proyectos...</div>}>
+          <Suspense fallback={<Loading />}>
             <MyProjects />
           </Suspense>
         )
@@ -71,7 +76,7 @@ export const router = createBrowserRouter([
       {
         path: "projects/:projectId",
         element: (
-          <Suspense fallback={<div>Cargando proyecto...</div>}>
+          <Suspense fallback={<Loading />}>
             <ProjectDetails />
           </Suspense>
         ),
@@ -83,7 +88,7 @@ export const router = createBrowserRouter([
           {
             path: "summary",
             element: (
-              <Suspense fallback={<div>Cargando resumen...</div>}>
+              <Suspense fallback={<Loading />}>
                 <ProjectSummary />
               </Suspense>
             )
@@ -99,7 +104,7 @@ export const router = createBrowserRouter([
           {
             path: "calendar",
             element: (
-              <Suspense fallback={<div>Cargando calendario...</div>}>
+              <Suspense fallback={<Loading />}>
                 <ProjectCalendar />
               </Suspense>
             )
@@ -120,17 +125,27 @@ export const router = createBrowserRouter([
         id:"login",
         path: 'login',
         element: <Login />,
-        handle: {
-          authConfig: loginConfig
-        }
       },
       {
         id:"register",
         path: 'register',
         element: <Register />,
-        handle: {
-          authConfig : registerConfig
-        }
+      },
+      {
+        path: 'confirm-account',
+        element: <ConfirmAccount /> 
+      },
+      {
+        path:'request-code',
+        element: <RequestNewCode />
+      },
+      {
+        path: 'forgot-password',
+        element: <ForgotPassword />
+      },
+      {
+        path: 'new-password',
+        element: <NewPassword />
       }
     ]
   },
@@ -140,7 +155,7 @@ export const router = createBrowserRouter([
   {
     path: "*",
     element: (
-      <Suspense fallback={<div>Cargando error...</div>}>
+      <Suspense fallback={<Loading />}>
         <ErrorPage />
       </Suspense>
     )

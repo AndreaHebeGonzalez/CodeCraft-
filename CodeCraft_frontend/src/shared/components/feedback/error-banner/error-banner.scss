@@ -12,6 +12,7 @@
   border: 1px solid s.$error-color;
   border-radius: 0.5rem;
   align-items: center;
+  min-width: 20rem;
   @include s.flex(row, 0.5rem);
 
   &__text {

@@ -34,7 +34,7 @@ const userSchema: Schema = new Schema(
     },  
     confirmed: {
       type: Boolean,
-      deafult: false
+      default: false
     },
 
     /* confirmationToken: {

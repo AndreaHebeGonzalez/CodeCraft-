@@ -1,17 +1,34 @@
 import nodemailer from 'nodemailer'
-import dotenv from "dotenv";
-dotenv.config();
 
 
-const config = () => {
-  return {
-    host: process.env.SMPT_HOST,
-    port: Number(process.env.SMPT_PORT),
+let transporter : nodemailer.Transporter
+
+
+export const initializeMailer = async () => {
+
+  const testAccount = await nodemailer.createTestAccount()
+
+  console.log('Ethereal account')
+  console.log(testAccount)
+
+  transporter = nodemailer.createTransport({
+    host: testAccount.smtp.host,
+    port: testAccount.smtp.port,
+    secure: testAccount.smtp.secure,
     auth: {
-    user: process.env.SMPT_USER,
-    pass: process.env.SMPT_PASS
+      user: testAccount.user,
+      pass: testAccount.pass
     }
-  }
+  })
 }
 
-export const transporter = nodemailer.createTransport(config());
+
+
+export const getTransporter = () => {
+
+  if (!transporter) {
+    throw new Error('Mailer no inicializado')
+  }
+
+  return transporter
+}

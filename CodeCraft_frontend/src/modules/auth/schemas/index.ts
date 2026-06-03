@@ -43,10 +43,38 @@ export const LoginFormSchema = z.object({
     .trim()
 })
 
+export const EmailFormSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .min(1, "El email es obligatorio")
+    .email({
+      message: "Formato de email inválido"
+    }) 
+})
+
+export const ForgotPasswordSchema = z.object({
+  password: z
+  .string()
+  .trim()
+  .min(8, "Debe tener al menos 8 caracteres")
+  .regex(/[A-Z]/, "Debe contener al menos una mayúscula")
+  .regex(/[0-9]/, "Debe contener al menos un número")
+  .regex(/[^A-Za-z0-9]/, "Debe contener un carácter especial"),
+  repeatPassword: z
+    .string()
+}).refine(
+  (data) => data.password === data.repeatPassword, {
+    message: "Las contraseñas deben coincidir",
+    path: ["repeatPassword"]
+  })
 
 /* Response */
 
 export const EmailExistsResponseSchema = z.object({
   exist: z.boolean()
 })
+
+
 

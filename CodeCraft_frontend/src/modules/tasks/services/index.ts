@@ -18,7 +18,6 @@ export const createTask = async({ taskFormData, projectId } : Pick<TaskApi, 'tas
   try {
     const { data } = await api.post<ApiResponse>(`/projects/${projectId}/tasks`, taskFormData)
     return data
-
   } catch (error) {
     if(isAxiosError(error)) {
       if(error.response) {

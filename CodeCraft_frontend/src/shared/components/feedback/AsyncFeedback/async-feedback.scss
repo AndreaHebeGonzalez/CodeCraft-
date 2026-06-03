@@ -1,0 +1,15 @@
+@use '@/shared/styles/utils' as s;
+
+.async-feedback {
+  width: 100%;
+  z-index: 110;
+  position: relative;
+  
+
+  &__overlay {
+    position: fixed;
+    z-index: 110;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}

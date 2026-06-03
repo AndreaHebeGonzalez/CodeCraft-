@@ -1,0 +1,17 @@
+@use "@/shared/styles/utils" as s;
+
+.account-action-layout {
+  min-height: 100dvh;
+
+  &__content {
+    padding-top: 5rem;
+    justify-content: center;
+    align-items: center;
+    @include s.flex(column, 1.5rem);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.5;
+  }
+}

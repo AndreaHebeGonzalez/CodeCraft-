@@ -17,12 +17,12 @@ const Logo = () => {
         <img src={logo} alt="CodeCraft logo"  className={`logo__img ${isAuthRoute ? 'logo__img--auth':''}`}/>
         {
           isAuthRoute && isTablet &&
-          <h1 className='logo__text'>CodeCraft</h1>
+          <h1 className='logo__name'>CodeCraft</h1>
         }
 
         {
           !isAuthRoute &&
-          <h1 className='logo__text'>CodeCraft</h1>
+          <h1 className='logo__name'>CodeCraft</h1>
         }
       </Link>
     </div>

@@ -127,3 +127,18 @@ export const blockScroll = (element: HTMLElement) => {
     element.removeEventListener('touchmove', prevent)
   }
 }
+
+
+/* Text */
+
+export const splitTextByPeriod = (text: string) => {
+  const textArray = text.split('.').filter(t=>t!=='')
+  if(textArray.length > 1) { 
+    const periodIndex = text.indexOf('.')
+    const firstPart = text.slice(0, periodIndex).trim()
+    const secondPart = text.slice(periodIndex + 1).trim()
+    return [ firstPart, secondPart ]
+  } else {
+    return  [ text ]
+  }
+}

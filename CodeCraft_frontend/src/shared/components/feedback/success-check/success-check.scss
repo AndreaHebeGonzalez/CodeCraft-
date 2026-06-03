@@ -1,0 +1,74 @@
+@use '@/shared/styles/utils' as s;
+
+.success-check {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  @include s.flex(column, 1rem);
+
+  
+  &__content {
+    border: 1px solid s.$border-cards;
+    padding: 3rem 4rem;
+    min-width: 50rem;
+    background-color: s.$bg-feedback-card;
+    border-radius: 1rem;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    @include s.flex(column, 1rem);
+  }
+
+  &__close-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    
+  }
+
+
+  &__animation {
+    
+    &--static {
+      width: 12rem;
+      height: 12rem;
+    } 
+
+    &--fixed {
+      /* z-index: 100; */
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__messages {
+    align-items: center;
+    justify-content: center;
+    @include s.flex(column, 1rem);
+  }
+
+  &__message {
+    font-weight: 600;
+    font-family: s.$secondary-font;
+    font-size: 1.8rem;
+    text-align: center;   
+    
+
+    &--text-light {
+      font-weight: 300;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__line {
+    height: 0.5px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 1.5rem 0;
+  }
+}
