@@ -1,0 +1,49 @@
+@use '@/shared/styles/utils' as s;
+@use 'sass:color';
+
+.error-card {
+  margin: 0.8rem;
+  padding: 1rem;
+  background-color: s.$bg-nav;
+  border-radius: 0.5rem;
+  border: 1px solid s.$border-cards;
+
+  &__container {
+    align-items: center;
+    justify-content: center;
+    @include s.flex(row, 1.5rem);
+  }
+
+
+
+  &__icon {
+    padding: 0.5rem;
+    background-color: rgb(226, 231, 231);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    @include s.flex();
+  }
+
+  &__icon-xlg {
+    path {
+      fill: color.adjust(s.$bg-nav, $lightness: 20%);
+    }
+  }
+
+  &__content {
+    @include s.flex(column, 0.5rem);
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &__text {
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: s.$text-grey;
+    font-family: s.$secondary-font;
+  }
+}

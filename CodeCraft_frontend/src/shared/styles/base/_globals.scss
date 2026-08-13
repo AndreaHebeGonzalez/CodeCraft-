@@ -53,6 +53,14 @@ ul {
   @include m.flex(column, 0.8rem);
 }
 
+[class*="accent"]   {
+  color: v.$secondary-color;
+}
+
+[class*="link"] {
+  cursor: pointer;
+}
+
 [class*="icon-xlg"] {
   width: v.$size-icon-xlarge;
   height: v.$size-icon-xlarge;

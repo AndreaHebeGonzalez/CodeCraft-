@@ -3,7 +3,8 @@ import type { Project, ProjectFormData, Projects } from "../types";
 import { isAxiosError } from "axios";
 import { ProjectsSchemaDTO, ProjectSchemaDTO } from "../schemas";
 import { mapDTOToDomain } from "@/shared/utils/utils";
-import type { ApiResponse } from "@/shared/types";
+import type { ApiResponse, ApiResponseWithData } from "@/shared/types";
+import { handleAppError } from "@/shared/error/handleAppError";
 
 type ProjectApi = {
   projectId: Project['_id'],
@@ -14,9 +15,10 @@ type ProjectApi = {
 
 
 
-export async function createProject(projectFormData : ProjectApi['projectFormData']) : Promise<ApiResponse<{ projectId: Project['_id'] }>>  {
+export async function createProject(projectFormData : ProjectApi['projectFormData']) : Promise<ApiResponseWithData<{ projectId: Project['_id'] }>>  {
   try {
-    const { data } = await api.post<ApiResponse<{ projectId: Project['_id'] }>>('/projects', projectFormData)
+    console.log(projectFormData)
+    const { data } = await api.post<ApiResponseWithData<{ projectId: Project['_id'] }>>('/projects', projectFormData)
     return data
   } catch (error) {
     if(isAxiosError(error)) {
@@ -38,6 +40,7 @@ export async function createProject(projectFormData : ProjectApi['projectFormDat
 }
 
 export async function getProjects() : Promise<Projects> {
+  
   try {
     const { data: response } = await api('/projects')
     const result = ProjectsSchemaDTO.safeParse(response.data)
@@ -46,15 +49,11 @@ export async function getProjects() : Promise<Projects> {
       console.error('Validación fallida:', result.error)
       throw new Error('Los datos del proyecto no son válidos')
     }
+
     return result.data.map((project) => mapDTOToDomain(project, ['startDate', 'dueDate']))
 
   } catch (error) {
-    if(isAxiosError(error) && error.response) {
-      throw new Error(error.response.data.message)
-    } else {
-      console.error('Error inesperado:', error)
-      throw new Error('Error inesperado')
-    }
+    handleAppError(error)
   }
 }
 
@@ -86,7 +85,7 @@ export async function getProjectById(id : Project['_id']) : Promise<Project>{
   }
 }
 
-export async function updateProjectField({ projectId, field, value } : Pick<ProjectApi, 'projectId'|'field'|'value'>) : Promise<ApiResponse<never>>  {
+export async function updateProjectField({ projectId, field, value } : Pick<ProjectApi, 'projectId'|'field'|'value'>) : Promise<ApiResponse>  {
   try {
     let formData
     /* Desarrollar valores de formData */
@@ -102,7 +101,7 @@ export async function updateProjectField({ projectId, field, value } : Pick<Proj
       }
     }
 
-    const { data } = await api.patch<ApiResponse<never>>(`/projects/${projectId}`, formData )
+    const { data } = await api.patch<ApiResponse>(`/projects/${projectId}`, formData )
 
     return data
 
@@ -125,9 +124,9 @@ export async function updateProjectField({ projectId, field, value } : Pick<Proj
   }
 }
 
-export async function deleteProject(id : Project['_id']) : Promise<ApiResponse<never>> {
+export async function deleteProject(id : Project['_id']) : Promise<ApiResponse> {
   try {
-    const { data } = await api.delete<ApiResponse<never>>(`/projects/${id}`) 
+    const { data } = await api.delete<ApiResponse>(`/projects/${id}`) 
     return data
   } catch (error) {
     if(isAxiosError(error)) {

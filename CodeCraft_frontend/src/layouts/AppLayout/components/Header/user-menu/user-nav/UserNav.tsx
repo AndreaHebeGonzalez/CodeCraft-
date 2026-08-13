@@ -1,4 +1,5 @@
 import { LogOut, User, MyProjectsOutline } from "@/assets/icon"
+import useLogout from "@/modules/auth/hooks/useLogout"
 import { AnimatePresence, motion } from "framer-motion"
 
 
@@ -16,6 +17,8 @@ const openVariant = {
 }
 
 export const UserNav = ({ userMenuRef, isOpen } : UserNavProps) => {
+
+  const { logout } = useLogout()
 
   return (
     <AnimatePresence>
@@ -45,7 +48,7 @@ export const UserNav = ({ userMenuRef, isOpen } : UserNavProps) => {
               />
               <p>Mis proyectos</p>
             </li>
-            <li className="user-menu__item">
+            <li className="user-menu__item" onClick={logout}>
               <LogOut 
                 className="user-menu__icon-lg"
               />

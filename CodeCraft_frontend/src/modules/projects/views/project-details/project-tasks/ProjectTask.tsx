@@ -15,6 +15,9 @@ const ProjectTask = () => {
   })
 
   if(isLoading) return 'Cargando...'
+
+  //! Tratar errores aca
+  
   if(isError) return (<div>Hubo un error al cargar las tareas, intentelo denuevo más tarde - Boton de reportar</div>)
   
   if(data) return (

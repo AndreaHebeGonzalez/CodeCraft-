@@ -52,6 +52,7 @@
   }
 
   &__item {
+    cursor: pointer;
     @include s.flex(row, 1rem);
 
     img {

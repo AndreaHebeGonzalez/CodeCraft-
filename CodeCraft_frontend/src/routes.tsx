@@ -8,6 +8,7 @@ import ConfirmAccount from "./modules/auth/views/ConfirmAccount";
 import RequestNewCode from "./modules/auth/views/RequestNewCode";
 import ForgotPassword from "./modules/auth/views/ForgotPassword";
 import NewPassword from "./modules/auth/views/NewPassword";
+import Invitation from "./modules/invitations/views/Invitation";
 
 /* ========= LAYOUT ========= */
 const AppLayout = lazy(() =>
@@ -113,6 +114,12 @@ export const router = createBrowserRouter([
       }
     ]
   },
+    /* ========= Invitation ========= */
+
+  {
+    path: '/invite/:token',
+    element: <Invitation />
+  },
 
   /* ========= AUTH ========= */
 
@@ -150,15 +157,25 @@ export const router = createBrowserRouter([
     ]
   },
 
+
+
+
+
   /* ========= 404 ========= */
   
   {
-    path: "*",
+    path: "/404",
     element: (
       <Suspense fallback={<Loading />}>
-        <ErrorPage />
+        <ErrorPage type="not-found"/>
       </Suspense>
     )
+  },
+
+
+  {
+    path: "*",
+    element: <Navigate to="/404" replace />
   }
 
 ]);

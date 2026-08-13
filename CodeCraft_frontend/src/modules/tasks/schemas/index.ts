@@ -9,12 +9,13 @@ export const TaskSchema = z.object({
   _id: z.string(),
   taskName: z.string(),
   description: z.string().optional(),
-  project: z.string(),
+  projectId: z.string(),
   parentTask: z.string().nullable(),
   status: taskStatusSchema,
   priority: taskPrioritySchema,
   startDate: z.string().nullable(),
   dueDate: z.string().nullable(),
+  completedAt: z.string().nullable(),
   createdAt: z.string(),
   updatedAt: z.string()
 })

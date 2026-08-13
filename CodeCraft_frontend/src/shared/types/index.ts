@@ -1,6 +1,7 @@
 import type { Location } from "react-router-dom";
 import type { dueStatusLabels } from "../locales/es";
 import type { Dispatch } from "react";
+import type { User } from "@/modules/users/types";
 
 
 export type ModalState = {
@@ -10,9 +11,16 @@ export type ModalState = {
 export type DueStatus = keyof typeof dueStatusLabels
 
 
-export type ApiResponse<T> = { 
+export type ApiResponse = { 
   message: string
-  data?: T 
+}
+
+export type ApiResponseOnlyData<T> = {
+  data: T
+}
+
+export type ApiResponseWithData<T> = ApiResponse & {
+  data: T
 }
 
 export type ApiErrorResponse<T> = {
@@ -38,4 +46,8 @@ export type AsyncFeedbackState = {
 export type AsyncFeedbackContextType = {
   feedback: AsyncFeedbackState
   setFeedback: Dispatch<React.SetStateAction<AsyncFeedbackState>>
+}
+
+export type AuthContext = {
+  user: User
 }

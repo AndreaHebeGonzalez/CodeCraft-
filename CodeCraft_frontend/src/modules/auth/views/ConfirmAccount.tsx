@@ -13,7 +13,7 @@ const ConfirmAccount = () => {
     >
       <VerifyCode 
         mutationFn={confirmAccount}
-        successRedirectTo=""
+        successRedirectTo="/"
         resendCodeRedirectTo="/auth/request-code"
         lottieAnimation={null}
         successMessage="¡Bienvenido a CodeCraft!"

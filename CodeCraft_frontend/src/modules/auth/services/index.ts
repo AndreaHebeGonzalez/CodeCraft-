@@ -1,9 +1,11 @@
 import api from "@/lib/axios"
 import { EmailExistsResponseSchema } from "../schemas"
-import type {  ApiResponse, LoginDataResponse } from "@/shared/types"
+import type {  ApiResponse, ApiResponseOnlyData, ApiResponseWithData, LoginDataResponse } from "@/shared/types"
 import type { LoginFormData, EmailFormData, RegisterFormData, TokenFormData, SendNewPasswordData } from "../types"
 import { handleAppError } from "@/shared/error/handleAppError"
 import { isAxiosError } from "axios"
+import type { User } from "@/modules/users/types"
+import { UserSchema } from "@/modules/users/schema"
 
 
 
@@ -38,47 +40,47 @@ export async function checkEmailExist( email : RegisterFormData['email']) {
   }
 }
 
-export async function createAccount (formData : RegisterFormData) : Promise<ApiResponse<never>['message']>{
+export async function createAccount (formData : RegisterFormData) : Promise<ApiResponse['message']>{
   try {
-    const { data } = await api.post<ApiResponse<never>>('/auth/create-account', formData)
+    const { data } = await api.post<ApiResponse>('/auth/create-account', formData)
     return data.message
   } catch (error) {
     handleAppError(error)
   }
 } 
 
-export async function confirmAccount(formData: TokenFormData) : Promise<ApiResponse<never>['message']> {
+export async function confirmAccount(formData: TokenFormData) : Promise<ApiResponse['message']> {
   try {
-    const { data } = await api.post<ApiResponse<never>>('auth/confirm-account', formData)
+    const { data } = await api.post<ApiResponse>('auth/confirm-account', formData)
     return data.message
   } catch (error) {
     handleAppError(error)
   }
 }
 
-export async function requestConfirmationCode(formData: EmailFormData) : Promise<ApiResponse<never>['message']> {
+export async function requestConfirmationCode(formData: EmailFormData) : Promise<ApiResponse['message']> {
   try {
-    const { data } = await api.post<ApiResponse<never>>('auth/request-code', formData)
+    const { data } = await api.post<ApiResponse>('auth/request-code', formData)
     return data.message
   } catch (error) {
     handleAppError(error)
   }
 }
 
-export async function authenticateUser(formData: LoginFormData) : Promise<ApiResponse<LoginDataResponse>> {
+export async function authenticateUser(formData: LoginFormData) : Promise<ApiResponse['message']> {
   try {
-    const { data } = await api.post<ApiResponse<LoginDataResponse>>('auth/login', formData)
-
-    return data
+    const { data } = await api.post<ApiResponseWithData<LoginDataResponse>>('auth/login', formData)
+    localStorage.setItem('AUTH_TOKEN', data.data?.token)
+    return data.message
   } catch (error) {
     handleAppError(error)
   }
 }
 
-export async function forgotPassword(formData: EmailFormData) : Promise<ApiResponse<never>['message']> {
+export async function forgotPassword(formData: EmailFormData) : Promise<ApiResponse['message']> {
   try {
     console.log(formData)
-    const { data } = await api.post<ApiResponse<never>>('auth/forgot-password', formData)
+    const { data } = await api.post<ApiResponse>('auth/forgot-password', formData)
     console.log(data)
     return data.message
   } catch (error) {
@@ -86,21 +88,40 @@ export async function forgotPassword(formData: EmailFormData) : Promise<ApiRespo
   }
 }
 
-export async function validateCode(formData: TokenFormData) : Promise<ApiResponse<never>['message']> {
+export async function validateCode(formData: TokenFormData) : Promise<ApiResponse['message']> {
   try {
-    const { data } = await api.post<ApiResponse<never>>('auth/validate-token', formData)
+    const { data } = await api.post<ApiResponse>('auth/validate-token', formData)
     return data.message
   } catch (error) {
     handleAppError(error)
   }
 }
 
-export async function sendNewPassword({ formData, token } : SendNewPasswordData) : Promise<ApiResponse<never>['message']> {
+export async function sendNewPassword({ formData, token } : SendNewPasswordData) : Promise<ApiResponse['message']> {
   try {
-    const { data } = await api.post<ApiResponse<never>>(`auth/update-password/${token}`, formData)
+    const { data } = await api.post<ApiResponse>(`auth/update-password/${token}`, formData)
     return data.message
   } catch (error) {
     handleAppError(error)
   }
 }
+
+
+export async function getUser() : Promise<ApiResponseOnlyData<User>['data']> {
+  //Repasar cuantas veces debe ejecutarse esto, porque la proteccion de rutas viene por otro lado, por el lado del token en la cabecera de cada solicitud
+  try {
+    const { data : response } = await api<ApiResponseOnlyData<User>>('auth/user')
+
+    const result = UserSchema.safeParse(response.data)
+
+    if(!result.success) {
+      throw result.error
+    }
+
+    return response.data
+
+  } catch (error) {
+    handleAppError(error) //Manejar en AuthLayout el error de parsing
+  }
+} 
 

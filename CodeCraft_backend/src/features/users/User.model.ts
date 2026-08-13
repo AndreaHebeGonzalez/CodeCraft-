@@ -1,0 +1,71 @@
+import mongoose, { Schema } from "mongoose";
+import { IUser } from "./user.types";
+
+
+const UserSchema: Schema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 2
+    },
+    email:{
+      type: String,
+      trim: true,
+      required: true,
+      lowercase: true,
+      unique: true,
+      index: true
+    },
+    password: {
+      type: String,
+      required: true,
+      select: false
+    },
+    provider: {
+      type: String,
+      enum: ['local', 'google'],
+      default: 'local'
+    },
+    googleId: {
+      type: String,
+      unique: true,
+      sparse: true
+    },  
+    confirmed: {
+      type: Boolean,
+      default: false
+    },
+
+    /* confirmationToken: {
+      type: String,
+      default: null
+    },
+    resetPasswordToken: {
+      type: String,
+      default: null
+    },
+    resetPasswordExpires: {
+      type: Date,
+      default: null
+    },
+    lastLogin: {
+      type: Date
+    },
+    loginAttempts: {
+      type: Number,
+      default: 0
+    },
+    lockUntil: {
+      type: Date
+    } */
+  }, 
+  {
+    timestamps: true
+  }
+)
+
+const User = mongoose.model<IUser>('User', UserSchema) 
+
+export default User

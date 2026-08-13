@@ -1,17 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { AnimatePresence, motion, easeInOut } from 'framer-motion'
 import { Home, Task, Messages, Teams, MyProjects, Close } from '@/assets/icon' 
 import Logo from '@/assets/logo/CodeCraft.png'
 import ProjectName from '@/shared/components/tags/project-name/ProjectName'
 import { ProjectRole } from '@/shared/components/tags/project-rol/ProjectRole'
-import { useQuery } from '@tanstack/react-query'
-import { getProjects } from '@/modules/projects/services'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import useAppStore from '@/shared/stores/useAppStore'
 import useClickOutside from '@/shared/hooks/useClickOutside'
 import { createPortal } from 'react-dom'
 import OverflowTooltip from '@/shared/components/tooltips/overflow-tooltip/OverflowTooltip'
 import './Sidebar.scss'
+import ErrorPage from '@/shared/components/errors/error-page/ErrorPage'
+import ProjectsList from './ProjectsList'
+
 
 const SIDEBAR_COLLAPSED_MOBILE_WIDTH = '0'
 const SIDEBAR_COLLAPSED_WIDTH = '50px'
@@ -52,8 +53,6 @@ const animateTextVariants = {
   closed: { opacity: 0, x: -10 }
 }
 
-
-
 const Sidebar = ({ isOpen, closeMenu } : SidebarProps) => {
 
   const { isTablet } = useAppStore()
@@ -68,12 +67,6 @@ const Sidebar = ({ isOpen, closeMenu } : SidebarProps) => {
 
   useClickOutside([sidebarRef], closeMenu, !isTablet)
 
-  const { data } = useQuery({
-    queryKey: ['projects'],
-    queryFn: getProjects
-  })
-
-  useEffect
 
   function handleMouseEnter (e : React.MouseEvent<HTMLDivElement, MouseEvent>) {
     const element = e.currentTarget
@@ -228,6 +221,7 @@ const Sidebar = ({ isOpen, closeMenu } : SidebarProps) => {
                 </Link>
               </ul>
             </div>
+
             <div className='sidebar__projects'>
               <Link to={'/projects'}>
                 <div className='sidebar__item'>
@@ -249,31 +243,16 @@ const Sidebar = ({ isOpen, closeMenu } : SidebarProps) => {
                         duration: 0.2,
                         delay: isOpen ? 0.15:0.3
                       }}
-                    >Mis proyectos</motion.p>
+                    >Proyectos</motion.p>
                   
                 </div>
               </Link>
-              
-              <div className='sidebar__projects-list-wrapper'>
-                <ul className='sidebar__projects-list'>
-                {
-                  data &&
-                  data.map(project => (
-                    <li className='sidebar__item' key={project._id}>
-                      <Link to={`/projects/${project._id}/summary`} className='sidebar__link-project'>
-                        <ProjectName 
-                          text={project.projectName}
-                          variant='#0000ff'
-                        />
-                        <ProjectRole
-                          role= 'dev'
-                        />
-                      </Link>
-                    </li>
-                  ))
-                }
-                </ul>
-              </div>
+              {
+                false &&
+                <div className='sidebar__projects-list-wrapper'>
+                  <ProjectsList />
+                </div>
+              }
             </div>
           </nav>
           

@@ -32,8 +32,10 @@ const EditableField = ({ className, value, field, placeholder, onSave, setEditin
     } = useEditableField({ value, shouldTruncateText, MAX_HEIGHT })
 
   function handleBlur() {
-    if(setNewValue) setNewValue(draft)
-    onSave(field, draft)
+    const newValue = draft.trim()
+    setDraft(prev=> prev.trim())
+    if(setNewValue) setNewValue(newValue)
+    onSave(field, newValue)
 
     if(setEditing) {
       setEditing(false)
@@ -63,7 +65,7 @@ const EditableField = ({ className, value, field, placeholder, onSave, setEditin
         onChange={(e) => handleChange(e)}
         onBlur={() => {
           handleBlur()
-          if(field === 'taskName' || field === 'projectName' && draft === '') {
+          if(field === 'taskName' || field === 'projectName' && draft.trim() === '') {
             setDraft(value)
           }
         }}

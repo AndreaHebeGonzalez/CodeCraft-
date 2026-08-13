@@ -14,7 +14,7 @@
 
   &__name {
     font-weight: 400;
-    font-size: 2.3rem;
+    font-size: 2rem;
     font-family: s.$logo-font;
   }
 
@@ -23,7 +23,7 @@
     height: auto;
 
     @include s.respond-to('tablet-2') {
-      width: 4rem;
+      width: 3.5rem;
     }
 
     &--auth {

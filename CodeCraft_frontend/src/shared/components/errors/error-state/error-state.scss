@@ -1,0 +1,41 @@
+@use '@/shared/styles/utils' as s;
+
+
+.error-state {
+  padding: 1rem 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  @include s.flex(column);
+  
+  &__wrapper {
+    width: 40%;
+    margin: 0 auto;
+    
+    align-items: center;
+    justify-content: center;
+    @include s.flex(column, 1.5rem);
+  }
+
+  &__illustration {
+    width: 85%;
+  }
+
+  &__title {
+    font-size: 2.6rem;
+  }
+
+  &__description {
+    text-align: center;
+    color:  s.$text-grey;
+    font-weight: 300;
+    font-family: s.$secondary-font;
+  }
+
+  button {
+    width: 50%;
+    justify-content: center;
+    @include s.flex(row)
+  }
+
+}

@@ -36,7 +36,7 @@ const TaskActionsMenu = ({ isOpen, ref, task } : TaskActionsMenu) => {
       openNotification(error.message || 'Error inesperado', true)
     },
     onSuccess: (data) => {
-      queryClient.invalidateQueries({queryKey: ['tasks', task.project]})
+      queryClient.invalidateQueries({queryKey: ['tasks', task.projectId]})
       openNotification(data.message)
     }
   })
@@ -65,7 +65,7 @@ const TaskActionsMenu = ({ isOpen, ref, task } : TaskActionsMenu) => {
               </Link>
             </li>
 
-            <li className='task-actions__item task-actions__item--deleted' onClick={() => mutate({projectId: task.project, taskId: task._id})}>
+            <li className='task-actions__item task-actions__item--deleted' onClick={() => mutate({projectId: task.projectId, taskId: task._id})}>
               <Delete 
                 width={15}
                 height={15}

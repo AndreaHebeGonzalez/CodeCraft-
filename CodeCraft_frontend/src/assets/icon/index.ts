@@ -9,6 +9,7 @@ import RightArrowSmall from './arrow-right-small.svg?react'
 import MenuClose from './sidebar/menu-close.svg?react'
 import MenuOpen from './sidebar/menu-open.svg?react'
 import Home from './sidebar/home-variant.svg?react'
+import HomeOutline from './sidebar/outline-home.svg?react'
 import Task from './sidebar/list-bulleted.svg?react'
 import Messages from './sidebar/inbox.svg?react'
 import Teams from './sidebar/account-group.svg?react'
@@ -43,6 +44,8 @@ import GoogleIcon from './logos--google-icon.svg?react'
 import Eye from './eye.svg?react'
 import EyeClosed from './eye-closed.svg?react'
 import ErrorX from './error-x-icon.svg?react'
+import NetworkIcon from './network-icon.svg?react'
+import AlertIcon from './alert-circle-outline.svg?react'
 
 const statusIconMap = {
   pending: PendingIcon,
@@ -64,6 +67,7 @@ export {
   MenuClose,
   MenuOpen,
   Home,
+  HomeOutline,
   Task,
   Messages,
   Teams,
@@ -93,6 +97,8 @@ export {
   GoogleIcon,
   Eye,
   EyeClosed,
-  ErrorX
+  ErrorX,
+  NetworkIcon,
+  AlertIcon
 }
 

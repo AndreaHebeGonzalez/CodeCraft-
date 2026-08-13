@@ -12,6 +12,7 @@ export const ProjectSchemaDTO = z.object({
   projectName: z.string(),
   clientName: z.string().optional(),
   description: z.string().optional(),
+  owner: z.string(),
   startDate: z.string().optional().nullable(),
   dueDate: z.string().optional().nullable(), 
   createdAt: z.string().optional(), 

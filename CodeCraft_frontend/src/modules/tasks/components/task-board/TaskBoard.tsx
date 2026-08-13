@@ -23,7 +23,6 @@ const statusTranslations : { [key in TaskStatusType]: string} = {
 } 
 
 export const TaskBoard = ({ projectTasks } : TaskBoardProps) => {
-
   const boardRef = useRef<HTMLDivElement>(null) 
 
   const tasks = projectTasks.map(object => object.task)

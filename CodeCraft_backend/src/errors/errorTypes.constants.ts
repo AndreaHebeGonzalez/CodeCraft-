@@ -1,0 +1,3 @@
+export const errorTypes = {
+  PROJECT_TASK_TREE_VERSION_CONFLICT: "PROJECT_TASK_TREE_VERSION_CONFLICT"
+} as const

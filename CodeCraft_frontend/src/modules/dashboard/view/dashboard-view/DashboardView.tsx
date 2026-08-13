@@ -1,22 +1,33 @@
 import { useQuery } from '@tanstack/react-query'
-import { Navigate } from 'react-router-dom'
 import Overview from '../../components/overview/Overview'
 import ProjectsActivitiesFeed from '../../components/projects-activities-feed/ProjectsActivitiesFeed'
 import UpcomingTasks from '../../components/upcoming-tasks/UpcomingTasks'
 import { getProjects } from '../../../projects/services'
+import type { Projects } from '@/modules/projects/types'
+import type { AppError } from '@/shared/error/AppError'
+import { Loading } from '@/shared/components/loading/Loading'
+import QueryErrorHandler from '@/shared/components/errors/query-error-handler/QueryErrorHandler'
 import './DashboardView.scss'
-
 
 
 export default function DashboardView() {
 
-  const { data, isError, isLoading } = useQuery({
+  const { data, isError, isLoading, error } = useQuery<
+    Projects,
+    AppError
+  >({
     queryKey: ['projects'],
     queryFn: getProjects,
+    retry: 1,
+    refetchOnWindowFocus: false
   })
 
-  if(isLoading) return 'Cargando...'
-  if(isError) return <Navigate to='/404' />
+  if(isLoading) return <Loading />
+
+
+  if (isError && error) {
+    return <QueryErrorHandler error={error} />
+  }
 
   if(data) return (
     <section className='dashboard'>
@@ -35,7 +46,7 @@ export default function DashboardView() {
           <ProjectsActivitiesFeed 
             projectsId={[]}
           />
-          {/* Existirála posibilidad de que el usuario decide que proyectos incluir en este apartado por eso esta vista solo se preocupa por qué proyectos mostrar y el componente busca la informacion de todos los id seleccionados y muetsra el mensaje de si hay o no atividades */}
+          {/* Existirá la posibilidad de que el usuario decide que proyectos incluir en este apartado por eso esta vista solo se preocupa por qué proyectos mostrar y el componente busca la informacion de todos los id seleccionados y muetsra el mensaje de si hay o no atividades */}
         </div>
       </div>
     </section>

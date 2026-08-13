@@ -7,13 +7,15 @@ import { Link } from 'react-router-dom'
 import './Header.scss'
 import { DateGenerate } from '@/shared/utils/dateUtils'
 import Logo from '@/shared/components/logo/Logo'
+import type { User } from '@/modules/users/types'
 
 type HeaderProps = {
   openMenu: boolean
   handleOpenMenu: () => void
+  user: User
 }
 
-const Header = ({ openMenu, handleOpenMenu } : HeaderProps) => {
+const Header = ({ openMenu, handleOpenMenu, user } : HeaderProps) => {
 
   const { isTabletTwo } = useAppStore()
 

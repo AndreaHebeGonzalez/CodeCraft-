@@ -80,7 +80,6 @@ export const getTaskById = async (projectId : Project['_id'],  taskId : Task['_i
 export const getTasksByProject = async (projectId : string) : Promise<TasksByProjectResponseDomain> => {
   try {
     const  { data : response } = await api(`/projects/${projectId}/tasks`) 
-
     const result = GetTasksByProjectResponseSchema.safeParse(response.data)
 
     if(!result.success) {
@@ -157,6 +156,7 @@ export const updateTaskField = async ({ projectId, taskId, field, value } : Pick
 export const deleteTask = async ({ projectId,  taskId } : Pick<TaskApi, 'projectId'|'taskId'>) : Promise<ApiResponse> => {
   try {
     const { data } = await api.delete<ApiResponse>(`/projects/${projectId}/tasks/${taskId}`)
+    console.log(data)
     return data
     
   } catch (error) {

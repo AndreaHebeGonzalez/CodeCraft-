@@ -1,2 +1,9 @@
 @use '@/shared/styles/utils' as s;
 
+.error-page {
+  max-height: 100dvb;
+
+  main {
+    padding: 5rem 0; 
+  }
+}

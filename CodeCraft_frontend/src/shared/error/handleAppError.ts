@@ -40,7 +40,7 @@ export function handleAppError(error : unknown) : never {
       })
     }
 
-    if(status === 401 || status === 403 ) {
+    if(status === 401 || status === 403) {
       throw new AppError({
         kind: "auth",
         status,
@@ -61,6 +61,7 @@ export function handleAppError(error : unknown) : never {
 
     throw new AppError({
       kind: "http",
+      status,
       userMessage: data?.message || "Ocurrió un problema en el servidor",
       technicalMessage: `HTTP ${status}: ${JSON.stringify(data)}`,
       details: data
@@ -72,7 +73,7 @@ export function handleAppError(error : unknown) : never {
 
   if (error instanceof Error && error.name === "ZodError") {
     throw new AppError({
-      kind: "validation",
+      kind: "parsing",
       userMessage: "Ocurrió un error al procesar los datos",
       technicalMessage: error.message,
       details: error

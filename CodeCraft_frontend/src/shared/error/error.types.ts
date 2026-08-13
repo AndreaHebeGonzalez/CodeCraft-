@@ -9,11 +9,7 @@ export type AppErrorKind =
 
 export type ErrorPageType = 
   | "not-found"
-  | "auth"
   | "network"
   | "server-error"
-  | "validation"
   | "unknown"
-
-
 

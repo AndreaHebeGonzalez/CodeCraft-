@@ -23,7 +23,7 @@ const ProjectDetails = () => {
 
   const queryClient = useQueryClient()
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ['project', projectId], 
     queryFn: () => getProjectById(projectId!),
     retry: 2
@@ -44,12 +44,19 @@ const ProjectDetails = () => {
       from?: Date | undefined;
       to?: Date | undefined;
     }) => {
+    
+    if(field === 'projectName' && value === '') {
+      return
+    }
 
+    console.log(field + ': ', value)
+    
     const data = {
       projectId: projectId,
       field,
       value
     }
+
     mutate(data)
   }
 
@@ -63,8 +70,12 @@ const ProjectDetails = () => {
 
 
   if(isLoading) return 'Cargando...'
-  if(isError) return <Navigate to='/404'/> 
 
+  if(isError && error) { 
+    //evaluar diferentes errores
+    return <Navigate to='/404'/> 
+  }
+  
   if (data) 
     return (
       <div className='project-details'>
@@ -81,7 +92,6 @@ const ProjectDetails = () => {
                 field='projectName'
                 onSave={onSave}
                 className='project-details__name'
-                /* onFocus={() => console.log('se hizo focus')} */
                 setEditing={handleSetEditing}
                 setNewValue={handleSetTitle}
               /> :
@@ -102,7 +112,7 @@ const ProjectDetails = () => {
               placeholder={'Agrega una descripcion para mayor información'}
               onSave={onSave}
               shouldTruncateText={true}
-              MAX_HEIGHT={50}
+              MAX_HEIGHT={90}
             />
           </div>
         </div>

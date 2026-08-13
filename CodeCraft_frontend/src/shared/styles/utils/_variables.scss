@@ -21,9 +21,11 @@ $border-cards: #352750;
 $bg-secondary: #1B122B; // Fondo para contenedor de cards, calendarios, campo de comentarios, inputs secundarios
 $bg-bar: #2F2247; // Barra inferior del menu principal
 $bg-feedback-card: #171727;
+$error-icon-color: #6F4BCD;
 
 // Neutros:
-$divider: #bdbdbd;    // Líneas divisorias
+$divider: #bdbdbd86;    // Líneas divisorias
+$divider-light: rgba(255,255,255,0.06);
 $text-primary: #fff;  
 $text-grey: #b3b3b3;    // Texto principal
 $border-grey: #6E6E6E;
@@ -132,7 +134,7 @@ $size-icon-extra-small: 1.2rem;
 $size-icon-small: 1.4rem;
 $size-icon-medium: 1.6rem;
 $size-icon-large: 2rem;
-$size-icon-xlarge: 2.5rem;
+$size-icon-xlarge: 2.3rem;
 
 $sidebar-item-spacing-inline: 1.3rem;
 

@@ -16,16 +16,8 @@
     font-size: 1.3rem;
   }
 
-  [class*="accent"]   {
-    color: s.$secondary-color;
-  }
-
   [class*="underline"]   {
     text-decoration: underline;
-  }
-
-  [class*="link"] {
-    cursor: pointer;
   }
 }
 

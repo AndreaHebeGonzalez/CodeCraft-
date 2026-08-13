@@ -1,0 +1,22 @@
+@use '@/shared/styles/utils' as s;
+
+.simple-header {
+  border-bottom: 0.2px solid rgba(255,255,255,0.06);
+  
+  &__content {
+    padding: 1rem;
+
+    @include s.flex-between()
+  }
+
+  &__home {
+    align-items: center;
+    @include s.flex(row, 0.8rem);
+
+  }
+
+  &__home-text {
+    font-family: s.$secondary-font;
+    font-size: 1.5rem;
+  }
+}

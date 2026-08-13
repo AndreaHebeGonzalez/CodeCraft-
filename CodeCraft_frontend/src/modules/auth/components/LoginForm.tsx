@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate, useOutletContext } from "react-router-dom"
+import { Link, useLocation, useNavigate, useOutletContext } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -22,6 +22,10 @@ const defaultValues = () => ({
 const LoginForm = () => {
 
   const navigate = useNavigate()
+  const location = useLocation()
+
+  const title = location.state?.title
+
 
   const { setFeedback } = useOutletContext<AsyncFeedbackContextType>()
   const { openErrorBanner, closeErrorBanner, showErrorBanner } = useAppStore()
@@ -78,8 +82,7 @@ const LoginForm = () => {
       }
       
     },
-    onSuccess: (data) => {
-      console.log(data.data?.token)
+    onSuccess: () => {
       
       setFeedback(prev=>({
         ...prev,
@@ -88,6 +91,7 @@ const LoginForm = () => {
         redirectTo: "/",
         message: "Iniciando sesión..."
       }))
+      
     }
   })
 
@@ -108,7 +112,7 @@ const LoginForm = () => {
 
   return (
     <div className="auth-forms">
-      <h2 className="auth-forms__title">¡Te damos la bienvenida de nuevo!</h2>
+      <h2 className="auth-forms__title">{title ? title : "¡Te damos la bienvenida de nuevo!"}</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="auth-forms__form">
         
         <FormInput 
